@@ -1,0 +1,8 @@
+//Como o sistema esta modularizado, será necessario acrescentar Scans na aplicação, para realizar o mapeamento dos módulos, como no exemplo abaixo:
+@ComponentScan("com.swcir.swcirsystem.Controllers")
+@EntityScan("com.swcir.swcirsystem.Models")
+@EnableJpaRepositories("com.swcir.swcirsystem.Repositories")
+
+
+Verificar com o Bruno como construir um try-catch adequado para
+os Mappings, para tratamento de erros.
