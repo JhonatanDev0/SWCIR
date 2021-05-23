@@ -24,7 +24,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @CrossOrigin
 @RestController
 @RequestMapping("/pfisica")
-public class JSONPFisicaController {
+public class PFisicaController {
     
         @Autowired
         private PFisicaRepository pfisicaRepository;

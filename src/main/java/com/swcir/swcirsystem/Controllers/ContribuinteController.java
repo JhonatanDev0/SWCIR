@@ -24,7 +24,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @CrossOrigin
 @RestController
 @RequestMapping("/contribuinte")
-public class JSONContribuinteController {
+public class ContribuinteController {
     
     @Autowired
     private ContribuinteRepository contRepository;
