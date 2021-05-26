@@ -3,6 +3,7 @@ package com.swcir.swcirsystem.Controllers;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import com.swcir.swcirsystem.Models.User;
 import com.swcir.swcirsystem.Repositories.UserRepository;
@@ -73,7 +74,7 @@ public class UserController {
 
     @PutMapping("/{userId}")
         public ResponseEntity<User> update(@RequestBody User user, @PathVariable Integer userId) {
-            User updatedUser = userRepository.getOne(userId);
+            Optional<User> updatedUser = userRepository.findById(userId);
             if(updatedUser != null){
                 user.setUserId(userId);
                 userRepository.save(user);

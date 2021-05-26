@@ -3,6 +3,7 @@ package com.swcir.swcirsystem.Controllers;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import com.swcir.swcirsystem.Models.PFisica;
 import com.swcir.swcirsystem.Repositories.PFisicaRepository;
@@ -74,7 +75,7 @@ public class PFisicaController {
 
         @PutMapping("/{pfisid}")
         public ResponseEntity<PFisica> update(@RequestBody PFisica pfisica, @PathVariable Integer pfisid) {
-            PFisica updatedPFisica = pfisicaRepository.getOne(pfisid);
+            Optional<PFisica> updatedPFisica = pfisicaRepository.findById(pfisid);
             if (updatedPFisica != null) {
                 pfisica.setPFisId(pfisid);
                 pfisicaRepository.save(pfisica);

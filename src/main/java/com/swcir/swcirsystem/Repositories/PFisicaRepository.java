@@ -2,8 +2,8 @@ package com.swcir.swcirsystem.Repositories;
 
 import com.swcir.swcirsystem.Models.PFisica;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface PFisicaRepository extends JpaRepository<PFisica, Integer> {
+public interface PFisicaRepository extends CrudRepository<PFisica, Integer> {
 
 }

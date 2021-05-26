@@ -2,8 +2,8 @@ package com.swcir.swcirsystem.Repositories;
 
 import com.swcir.swcirsystem.Models.Contribuinte;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ContribuinteRepository extends JpaRepository<Contribuinte, Integer> {
+public interface ContribuinteRepository extends CrudRepository<Contribuinte, Integer> {
    
 }
