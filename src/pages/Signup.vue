@@ -7,7 +7,7 @@
     <div class="content" method="POST">
       <div class="container">
         <div class="col-md-5 ml-auto mr-auto">
-          <card type="login" plain name="login">
+          <card type="login" plain>
             <div slot="header" class="logo-container">
               <img
                 v-lazy="'img/now-logo.png'"
@@ -128,23 +128,23 @@ export default {
       }
     },
     validar() {
-      var name = login.name.value;
-      var email = login.email.value;
-      var password = login.password.value;
+      var name = name.value;
+      var email = email.value;
+      var password = password.value;
 
       if (nome == "") {
         alert("Preencha o campo nome. ");
-        login.name.focus();
+        name.focus();
         return false;
       }
-      if (password == "" || password.length <= 5) {
+      if (password == "") {
         alert("Preencha o campo nome. ");
-        login.password.focus();
+        password.focus();
         return false;
       }
       if (email == "" || email.indexOf("@") == -1) {
         alert("Preencha o campo nome. ");
-        login.email.focus();
+        email.focus();
         return false;
       }
     },
