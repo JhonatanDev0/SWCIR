@@ -33,6 +33,9 @@ public class PFisica {
     @OneToOne(mappedBy="pfisica")
     private Contribuinte contribuinte;
 
+    @OneToOne(mappedBy="pFisica")
+    private Dependente dependente;
+
     private String name;
 
     //@Convert(converter=StringIntConverter.class)
@@ -46,8 +49,7 @@ public class PFisica {
 
     private String nitPisPasep;
 
-    private Integer numDependentes;
-
+    //@Convert(converter=StringIntConverter.class)
     private int tituloEleitoral;    
 
     public PFisica() {}
@@ -98,14 +100,6 @@ public class PFisica {
     
     public String getNitPisPasep() {
         return nitPisPasep;
-    }
-
-    public void setNumDependentes(Integer numDependentes) {
-        this.numDependentes = numDependentes;
-    }
-
-    public Integer getNumDependentes() {
-        return numDependentes;
     }
 
     public void setTituloEleitoral(int tituloEleitoral) {

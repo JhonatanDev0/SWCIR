@@ -3,7 +3,6 @@ package com.swcir.swcirsystem.Controllers;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import com.swcir.swcirsystem.Models.Contribuinte;
 import com.swcir.swcirsystem.Repositories.ContribuinteRepository;
@@ -75,7 +74,7 @@ public class ContribuinteController {
 
     @PutMapping("/edit/{contId}")
         public ResponseEntity<Contribuinte> update(@RequestBody Contribuinte contribuinte, @PathVariable Integer contId) {
-            Optional<Contribuinte> updatedCont = contRepository.findById(contId);
+            Contribuinte updatedCont = contRepository.getOne(contId);
             if (updatedCont != null) {
                 contribuinte.setContId(contId);
                 contRepository.save(contribuinte);
