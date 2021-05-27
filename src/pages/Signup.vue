@@ -85,6 +85,7 @@
 import { Card, FormGroupInput } from "@/components";
 import userServices from "../services/users";
 import Button from "../components/Button.vue";
+import { Input } from 'element-ui';
 export default {
   name: "login-page",
   bodyClass: "login-page",
@@ -124,6 +125,27 @@ export default {
         senha.type = "text";
       } else {
         senha.type = "password";
+      }
+    },
+    validar() {
+      var name = name.value;
+      var email = email.value;
+      var password = password.value;
+
+      if (nome == "") {
+        alert("Preencha o campo nome. ");
+        name.focus();
+        return false;
+      }
+      if (password == "") {
+        alert("Preencha o campo nome. ");
+        password.focus();
+        return false;
+      }
+      if (email == "" || email.indexOf("@") == -1) {
+        alert("Preencha o campo nome. ");
+        email.focus();
+        return false;
       }
     },
   },
