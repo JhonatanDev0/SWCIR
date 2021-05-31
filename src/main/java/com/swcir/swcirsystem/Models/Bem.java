@@ -21,8 +21,8 @@ public class Bem {
     private int bemId;
 
     @ManyToOne
-    @JoinColumn(name="contId", nullable = false)
-    private Contribuinte contribuinte;
+    @JoinColumn(name="userId", nullable = false)
+    private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="tipoBemId", referencedColumnName = "tipoBemId")

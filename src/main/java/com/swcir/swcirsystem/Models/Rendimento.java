@@ -21,8 +21,8 @@ public class Rendimento {
     private int rendId;
 
     @ManyToOne
-    @JoinColumn(name="contId", nullable = false)
-    private Contribuinte contribuinte;
+    @JoinColumn(name="userId", nullable = false)
+    private User user;
 
     private String tipoFontPag;
 
