@@ -27,23 +27,10 @@
         </div>
       </el-popover>
     </template>
-    <template slot="navbar-menu">
-      <drop-down
-        tag="li"
-        title="Acessar Conta"
-        icon="now-ui-icons gestures_tap-01"
-        class="nav-item"
-      >
-        <nav-link to="/profile">
-          <i class="now-ui-icons users_single-02"></i> Profile
-        </nav-link>
-      </drop-down>
-    </template>
   </navbar>
 </template>
 
 <script>
-import { DropDown, Navbar, NavLink } from "@/components";
 import { Popover } from "element-ui";
 export default {
   name: "main-navbar",
@@ -52,9 +39,6 @@ export default {
     colorOnScroll: Number,
   },
   components: {
-    DropDown,
-    Navbar,
-    NavLink,
     [Popover.name]: Popover,
   },
 };
