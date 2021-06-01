@@ -13,11 +13,16 @@
           <h3 style="text-shadow: 2px 2px black">
             Feito para você que se perde com documentos.
           </h3>
-          <a href="#/login">
-          <n-button type="neutral" round style="color:black">
-            <i class="now-ui-icons ui-1_send"></i> Comece já
-          </n-button>
-          </a>
+            <div v-if="!$auth.loading">
+              <!-- show login when not authenticated -->
+              <n-button type="neutral" round style="color: black" v-if="!$auth.isAuthenticated" @click="login">
+                <i class="now-ui-icons ui-1_send"></i> Comece já
+              </n-button>
+              <!-- show logout when authenticated -->
+              <n-button type="neutral" round style="color: black" v-if="$auth.isAuthenticated" @click="logout">
+                <i class="now-ui-icons ui-1_send"></i> Log out
+              </n-button>
+            </div>
         </div>
         <h6 class="category category-absolute">
           Designed by
@@ -82,6 +87,18 @@ export default {
     Parallax,
     [Button.name]: Button,
   },
+  methods: {
+    // Log the user in
+    login() {
+      this.$auth.loginWithRedirect();
+    },
+    // Log the user out
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      });
+    }
+  }
 };
 </script>
 <style></style>
