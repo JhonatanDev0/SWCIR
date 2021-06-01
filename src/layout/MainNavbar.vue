@@ -7,7 +7,12 @@
     menu-classes="ml-auto"
   >
     <template>
-      <router-link v-popover:popover1 style="text-shadow: 2px 2px black;" class="navbar-brand" to="/">
+      <router-link
+        v-popover:popover1
+        style="text-shadow: 2px 2px black"
+        class="navbar-brand"
+        to="/"
+      >
         SWCIR
       </router-link>
       <el-popover
@@ -24,16 +29,13 @@
     </template>
     <template slot="navbar-menu">
       <drop-down
-              tag="li"
-              title="Acessar Conta"
-              icon="now-ui-icons gestures_tap-01"
-              class="nav-item"
+        tag="li"
+        title="Acessar Conta"
+        icon="now-ui-icons gestures_tap-01"
+        class="nav-item"
       >
-        <nav-link to="/login">
-          <i class="now-ui-icons users_single-02"></i> Login
-        </nav-link>
-        <nav-link to="/Signup">
-          <i class="now-ui-icons ui-1_simple-add"></i> Cadastro
+        <nav-link to="/profile">
+          <i class="now-ui-icons users_single-02"></i> Profile
         </nav-link>
       </drop-down>
     </template>
@@ -41,20 +43,20 @@
 </template>
 
 <script>
-import { DropDown, Navbar, NavLink } from '@/components';
-import { Popover } from 'element-ui';
+import { DropDown, Navbar, NavLink } from "@/components";
+import { Popover } from "element-ui";
 export default {
-  name: 'main-navbar',
+  name: "main-navbar",
   props: {
     transparent: Boolean,
-    colorOnScroll: Number
+    colorOnScroll: Number,
   },
   components: {
     DropDown,
     Navbar,
     NavLink,
-    [Popover.name]: Popover
-  }
+    [Popover.name]: Popover,
+  },
 };
 </script>
 
