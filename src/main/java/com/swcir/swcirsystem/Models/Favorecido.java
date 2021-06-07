@@ -1,12 +1,18 @@
 package com.swcir.swcirsystem.Models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="FAVORECIDOS")
@@ -15,20 +21,32 @@ public class Favorecido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="favId")
-    private int favId;
+    private Integer favId;
 
-    @OneToOne(mappedBy = "favorecido")
-    private Pagamento pagamento;
+    @JsonManagedReference("FavRef")
+    @JsonIgnore
+    @OneToMany(mappedBy = "favorecido", fetch = FetchType.LAZY)
+    private List<Pagamento> pagamento;
 
-    private int docFav;
+    public Favorecido() {}
+
+    private Integer docFav;
 
     private String nomeFav;
 
-    public int getDocFav() {
+    public Integer getFavId() {
+        return favId;
+    }
+
+    public void setFavId(Integer favId) {
+        this.favId = favId;
+    }
+
+    public Integer getDocFav() {
         return docFav;
     }
 
-    public void setDocFav(int docFav) {
+    public void setDocFav(Integer docFav) {
         this.docFav = docFav;
     }
 
@@ -38,6 +56,14 @@ public class Favorecido {
 
     public void setNomeFav(String nomeFav) {
         this.nomeFav = nomeFav;
+    }
+
+    public List<Pagamento> getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(List<Pagamento> pagamento) {
+        this.pagamento = pagamento;
     }
 
 }

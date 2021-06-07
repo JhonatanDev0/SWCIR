@@ -1,11 +1,11 @@
 package com.swcir.swcirsystem.Models;
 
-
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class User {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="userId")
     private Integer userId;
 
@@ -36,7 +38,7 @@ public class User {
     
     private String natOcupacao;
 
-    private int numReciboAnterior;
+    private Integer numReciboAnterior;
 
     private Long cpf;
 
@@ -49,15 +51,18 @@ public class User {
 
     private Long tituloEleitoral;
     
-    private int numDependentes;
+    private Integer numDependentes;
 
-    @OneToMany(mappedBy="user")
+    @JsonManagedReference("PagUserRef")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Pagamento> pagamento;
 
-    @OneToMany(mappedBy = "user")
+    @JsonManagedReference("RendUserRef")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Rendimento> rendimento;
 
-    @OneToMany(mappedBy = "user")
+    @JsonManagedReference("BemUserRef")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Bem> bem;
 
     public User() {}
@@ -110,11 +115,11 @@ public class User {
         this.natOcupacao = natOcupacao;
     }
 
-    public int getNumReciboAnterior() {
+    public Integer getNumReciboAnterior() {
         return numReciboAnterior;
     }
 
-    public void setNumReciboAnterior(int numReciboAnterior) {
+    public void setNumReciboAnterior(Integer numReciboAnterior) {
         this.numReciboAnterior = numReciboAnterior;
     }
 
@@ -150,12 +155,35 @@ public class User {
         this.tituloEleitoral = tituloEleitoral;
     }
 
-    public int getNumDependentes() {
+    public Integer getNumDependentes() {
         return numDependentes;
     }
 
-    public void setNumDependentes(int numDependentes) {
+    public void setNumDependentes(Integer numDependentes) {
         this.numDependentes = numDependentes;
     }
 
+    public List<Rendimento> getRendimento() {
+        return rendimento;
+    }
+
+    public void setRendimento(List<Rendimento> rendimento) {
+        this.rendimento = rendimento;
+    }
+
+    public List<Pagamento> getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(List<Pagamento> pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    // public List<Bem> getBem() {
+    //     return bem;
+    // }
+
+    // public void setBem(List<Bem> bem) {
+    //     this.bem = bem;
+    // }
 }

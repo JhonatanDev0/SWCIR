@@ -1,15 +1,18 @@
 package com.swcir.swcirsystem.Models;
 
-import javax.persistence.CascadeType;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="RENDIMENTOS")
@@ -18,23 +21,35 @@ public class Rendimento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="rendId")
-    private int rendId;
+    private Integer rendId;
 
-    @ManyToOne
+    @JsonBackReference("RendUserRef")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="userId", nullable = false)
     private User user;
 
     private String tipoFontPag;
 
-    private int docFontPag;
+    private Integer docFontPag;
 
     private String nomeFontPag;
 
     private double valorRend;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="tipoRendId", referencedColumnName = "tipoRendId")
+    @JsonBackReference("TipoRendimentoRef")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="tipoRendId", nullable = false)
     private TipoRendimento tipoRendimento;
+
+    public Rendimento () {}
+
+    public Integer getRendId() {
+        return rendId;
+    }
+
+    public void setRendId(Integer rendId) {
+        this.rendId = rendId;
+    }
 
     public String getTipoFontPag() {
         return tipoFontPag;
@@ -44,11 +59,11 @@ public class Rendimento {
         this.tipoFontPag = tipoFontPag;
     }
 
-    public int getDocFontPag() {
+    public Integer getDocFontPag() {
         return docFontPag;
     }
 
-    public void setDocFontPag(int docFontPag) {
+    public void setDocFontPag(Integer docFontPag) {
         this.docFontPag = docFontPag;
     }
 
@@ -66,5 +81,21 @@ public class Rendimento {
 
     public void setValorRend(double valorRend) {
         this.valorRend = valorRend;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public TipoRendimento getTipoRendimento() {
+        return tipoRendimento;
+    }
+
+    public void setTipoRendimento(TipoRendimento tipoRendimento) {
+        this.tipoRendimento = tipoRendimento;
     }
 }
