@@ -58,7 +58,7 @@ public class UserController {
         public ResponseEntity<User> create(@RequestBody User user) 
             throws URISyntaxException {
             User createdUser = userRepository.save(user);
-            if (createdUser == null || createdUser.getPassword().isEmpty() || createdUser.getEmail().isEmpty() || createdUser.getName().isEmpty()) {
+            if (createdUser == null || createdUser.getEmail().isEmpty() || createdUser.getName().isEmpty()) {
                 return ResponseEntity.notFound().build();
             } else {
                 URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
