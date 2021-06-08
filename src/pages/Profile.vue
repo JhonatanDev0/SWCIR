@@ -35,6 +35,10 @@
           </div>
           <div class="social-description">
             <h2>X</h2>
+            <p>Contribuinte</p>
+          </div>
+          <div class="social-description">
+            <h2>X</h2>
             <p>Dependentes</p>
           </div>
         </div>

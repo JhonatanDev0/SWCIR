@@ -11,12 +11,19 @@
       <div class="row pull-left">
         <card class="card-signup" header-classes="text-center" color="black">
           <template slot="header">
-            <h3 class="card-title title-up">Cadastro Dependentes</h3>
+            <h3 class="card-title title-up">Cadastro Contribuinte</h3>
           </template>
           <template>
             <fg-input
               class="no-border"
               placeholder="Nome Completo..."
+              addon-left-icon="now-ui-icons users_circle-08"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
+              placeholder="E-mail..."
               addon-left-icon="now-ui-icons users_circle-08"
             >
             </fg-input>
