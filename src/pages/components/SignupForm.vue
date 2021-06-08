@@ -30,8 +30,15 @@
 
             <fg-input
               class="no-border"
+              placeholder="Ocupação..."
+              addon-left-icon="now-ui-icons text_caps-small"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
               placeholder="CPF..."
-              addon-left-icon="now-ui-icons files_paper"
+              addon-left-icon="now-ui-icons business_badge"
             >
             </fg-input>
 
@@ -55,6 +62,14 @@
               addon-left-icon="now-ui-icons business_badge"
             >
             </fg-input>
+
+            <fg-input
+              class="no-border"
+              placeholder="numDependentes..."
+              addon-left-icon="now-ui-icons users_circle-08"
+            >
+            </fg-input>
+
           </template>
           <div class="card-footer text-center">
             <n-button type="neutral" round size="lg" style="color: black"
