@@ -5,8 +5,8 @@ const cadastrarDependentes = (body) => {
     return api.post(`${endpoint}/add`, body);
 };
 
-const userServices = {
+const userServicesDep = {
     cadastrarDependentes,
 };
 
-export default userServices;
+export default userServicesDep;
