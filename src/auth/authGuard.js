@@ -1,4 +1,4 @@
-import { getInstance } from "./index";
+/* import { getInstance } from "./index";
 
 export const authGuard = (to, from, next) => {
   const authService = getInstance();
@@ -24,4 +24,5 @@ export const authGuard = (to, from, next) => {
       return fn();
     }
   });
-};
+}; 
+*/
