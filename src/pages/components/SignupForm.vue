@@ -187,8 +187,8 @@
       <div class="col text-center"></div>
     </div>
 <br>
-    <div class="container">
-      <div class="row">
+    <div class="containerPag">
+      <div class="row pull-left">
         <card class="card-signup" header-classes="text-center" color="black">
           <template slot="header">
             <h3 class="card-title title-up">Cadastro Pagamentos</h3>
@@ -221,7 +221,7 @@
     </div>
 <br>
     <div class="container">
-      <div class="row">
+      <div class="row pull-right">
         <card class="card-signup" header-classes="text-center" color="black">
           <template slot="header">
             <h3 class="card-title title-up">Cadastro Favorecidos</h3>
@@ -250,7 +250,6 @@
           </div>
         </card>
       </div>
-      <div class="col text-center"></div>
     </div>
   </div>
 </template>
@@ -381,4 +380,9 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.containerPag{
+  right: 1110px;
+  position: absolute;
+}
+</style>
