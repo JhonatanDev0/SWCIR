@@ -7,7 +7,6 @@
     menu-classes="ml-auto"
   >
     <template>
-<<<<<<< HEAD
       <router-link
         v-popover:popover1
         style="text-shadow: 2px 2px black"
@@ -15,10 +14,6 @@
         to="/"
       >
        <i class="now-ui-icons education_atom"></i> SWCIR
-=======
-      <router-link v-popover:popover1 style="text-shadow: 2px 2px black;" class="navbar-brand" to="/">
-        SWCIR
->>>>>>> parent of 4c85c15 (Merge pull request #1 from JhonatanDev0/Login)
       </router-link>
       <el-popover
         ref="popover1"
@@ -32,8 +27,6 @@
         </div>
       </el-popover>
     </template>
-<<<<<<< HEAD
-=======
     <template slot="navbar-menu">
       <drop-down
               tag="li"
@@ -49,34 +42,26 @@
         </nav-link>
       </drop-down>
     </template>
->>>>>>> parent of 4c85c15 (Merge pull request #1 from JhonatanDev0/Login)
   </navbar>
 </template>
 
 <script>
-<<<<<<< HEAD
 import { Navbar } from "@/components";
 import { Popover } from "element-ui";
-=======
-import { DropDown, Navbar, NavLink } from '@/components';
-import { Popover } from 'element-ui';
->>>>>>> parent of 4c85c15 (Merge pull request #1 from JhonatanDev0/Login)
+import { DropDown, NavLink } from "@/components";
 export default {
-  name: 'main-navbar',
+  name: "main-navbar",
   props: {
     transparent: Boolean,
-    colorOnScroll: Number
+    colorOnScroll: Number,
   },
   components: {
     Navbar,
-<<<<<<< HEAD
+    DropDown,
+    [Popover.name]: Popover,
+    NavLink,
     [Popover.name]: Popover,
   },
-=======
-    NavLink,
-    [Popover.name]: Popover
-  }
->>>>>>> parent of 4c85c15 (Merge pull request #1 from JhonatanDev0/Login)
 };
 </script>
 
