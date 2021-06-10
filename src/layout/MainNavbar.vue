@@ -13,7 +13,7 @@
         class="navbar-brand"
         to="/"
       >
-        SWCIR
+       <i class="now-ui-icons education_atom"></i> SWCIR
       </router-link>
       <el-popover
         ref="popover1"
