@@ -92,7 +92,6 @@
     <div>
       <h4 class="title text-center">Meus Dados</h4>
     </div>
-    <signup-form></signup-form>
     <!-- <div class="section">
       <div class="container">
         <div class="row">
@@ -224,16 +223,12 @@
 </template>
 <script>
 /* import { Tabs, TabPane } from "@/components"; */
-import SignupForm from "./components/SignupForm";
-import Tab from "../components/Tabs/Tab.vue";
-
 export default {
   name: "profile",
   bodyClass: "profile-page",
   components: {
     /*Tabs,
     TabPane, */
-    SignupForm
   },
 };
 </script>

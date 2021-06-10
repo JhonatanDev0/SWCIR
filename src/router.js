@@ -4,6 +4,7 @@ import Index from './pages/Index.vue';
 import Landing from './pages/Signup.vue';
 import Login from './pages/Login.vue';
 import Profile from './pages/Profile.vue';
+import Profileadd from './pages/Profileadd.vue';
 import MainNavbar from './layout/MainNavbar.vue';
 import MainFooter from './layout/MainFooter.vue';
 import MainNavbar2 from './layout/MainNavbar2';
@@ -45,6 +46,15 @@ export default new Router({
       name: 'profile',
       components: { default: Profile, header: MainNavbar2, footer: MainFooter },
       beforeEnter: authGuard,
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: 'black' }
+      }
+    },
+    {
+      path: '/profileadd',
+      name: 'profileadd',
+      components: { default: Profileadd, header: MainNavbar2, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: 'black' }
