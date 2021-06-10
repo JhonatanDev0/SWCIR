@@ -34,6 +34,9 @@
         icon="now-ui-icons gestures_tap-01"
         class="nav-item"
       >
+        <nav-link to="/profile">
+          <i class="now-ui-icons users_single-02"></i> Meus Dados
+        </nav-link>
         <nav-link to="/profileadd">
           <i class="now-ui-icons ui-1_simple-add"></i> Cadastrar Dados
         </nav-link>
