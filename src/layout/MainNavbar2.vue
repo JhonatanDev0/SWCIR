@@ -35,15 +35,7 @@
         class="nav-item"
       >
         <nav-link to="/">
-          <n-button
-            type="neutral"
-            round
-            style="color: black"
-            v-if="$auth.isAuthenticated"
-            @click="logout"
-          >
-            <i class="now-ui-icons ui-1_simple-remove"></i> Sair
-          </n-button>
+          <i class="now-ui-icons ui-1_simple-remove"></i> Sair
         </nav-link>
       </drop-down>
     </template>
@@ -64,14 +56,6 @@ export default {
     Navbar,
     NavLink,
     [Popover.name]: Popover,
-  },
-  methods: {
-    // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin,
-      });
-    },
   },
 };
 </script>
