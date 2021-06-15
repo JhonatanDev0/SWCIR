@@ -1,8 +1,8 @@
 import api from './api';
-const endpoint = '/favorecidos';
+const endpoint = '/fav';
 
 const cadastrarFavorecidos = (body) => {
-    return api.post(`${endpoint}/add`, body);
+    return api.post(`${endpoint}/`, body);
 };
 
 const userServicesFav = {

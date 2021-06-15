@@ -273,7 +273,7 @@ export default {
       email: "",
       ocupacao: "",
       cpf: "",
-      dataNasc: "",
+      dataNasc: Date,
       nitPisPasep: "",
       tituloEleitoral: "",
       numDependentes: "",

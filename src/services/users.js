@@ -1,5 +1,5 @@
 import api from './api';
-const endpoint = '/contribuinte';
+const endpoint = '/user';
 
 const cadastrarContribuinte = (body) => {
     return api.post(`${endpoint}/`, body);

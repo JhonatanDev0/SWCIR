@@ -1,8 +1,8 @@
 import api from './api';
-const endpoint = '/bens';
+const endpoint = '/bem';
 
 const cadastrarBens = (body) => {
-    return api.post(`${endpoint}/add`, body);
+    return api.post(`${endpoint}/`, body);
 };
 
 const userServicesBens = {
