@@ -16,7 +16,7 @@
         </div>
         <h3 class="title">Jhonatan</h3>
         <p class="category">Estudante de TI</p>
-        <div class="content">
+        <!-- <div class="content">
           <div class="social-description">
             <h2>X</h2>
             <p>Bens</p>
@@ -41,7 +41,7 @@
             <h2>X</h2>
             <p>Dependentes</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div>
