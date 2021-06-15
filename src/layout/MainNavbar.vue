@@ -13,7 +13,7 @@
         class="navbar-brand"
         to="/"
       >
-        SWCIR
+       <i class="now-ui-icons education_atom"></i> SWCIR
       </router-link>
       <el-popover
         ref="popover1"
@@ -27,12 +27,28 @@
         </div>
       </el-popover>
     </template>
+    <template slot="navbar-menu">
+      <drop-down
+              tag="li"
+              title="Acessar Conta"
+              icon="now-ui-icons gestures_tap-01"
+              class="nav-item"
+      >
+        <nav-link to="/login">
+          <i class="now-ui-icons users_single-02"></i> Login
+        </nav-link>
+        <nav-link to="/Signup">
+          <i class="now-ui-icons ui-1_simple-add"></i> Cadastro
+        </nav-link>
+      </drop-down>
+    </template>
   </navbar>
 </template>
 
 <script>
 import { Navbar } from "@/components";
 import { Popover } from "element-ui";
+import { DropDown, NavLink } from "@/components";
 export default {
   name: "main-navbar",
   props: {
@@ -41,6 +57,9 @@ export default {
   },
   components: {
     Navbar,
+    DropDown,
+    [Popover.name]: Popover,
+    NavLink,
     [Popover.name]: Popover,
   },
 };

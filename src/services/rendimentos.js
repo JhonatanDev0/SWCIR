@@ -1,12 +1,12 @@
 import api from './api';
-const endpoint = '/rendimentos';
+const endpoint = '/rend';
 
 const cadastrarRendimentos = (body) => {
-    return api.post(`${endpoint}/add`, body);
+    return api.post(`${endpoint}/`, body);
 };
 
-const userServices = {
+const userServicesRend = {
     cadastrarRendimentos,
 };
 
-export default userServices;
+export default userServicesRend;

@@ -83,8 +83,8 @@
 </template>
 <script>
 import { Card, FormGroupInput } from "@/components";
-import userServices from "../services/users";
-import Button from "../components/Button.vue";
+/* import userServices from "../services/users";
+import Button from "../components/Button.vue"; */
 export default {
   name: "login-page",
   bodyClass: "login-page",
@@ -93,7 +93,7 @@ export default {
     //Button,
     //[Button.name]: Button,
     [FormGroupInput.name]: FormGroupInput,
-  },
+  } /* ,
   data() {
     return {
       name: "",
@@ -126,7 +126,7 @@ export default {
         senha.type = "password";
       }
     },
-  },
+  }, */
 };
 </script>
 <style></style>

@@ -16,7 +16,7 @@
         </div>
         <h3 class="title">Jhonatan</h3>
         <p class="category">Estudante de TI</p>
-        <div class="content">
+        <!-- <div class="content">
           <div class="social-description">
             <h2>X</h2>
             <p>Bens</p>
@@ -41,7 +41,7 @@
             <h2>X</h2>
             <p>Dependentes</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div>
@@ -92,8 +92,7 @@
     <div>
       <h4 class="title text-center">Meus Dados</h4>
     </div>
-    <signup-form></signup-form>
-    <div class="section">
+    <!-- <div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-6 ml-auto mr-auto">
@@ -217,23 +216,19 @@
           </tabs>
         </div>
       </div>
-    </div>
+    </div> -->
     
     <br>
   </div>
 </template>
 <script>
-import { Tabs, TabPane } from "@/components";
-import SignupForm from "./components/SignupForm";
-import Tab from "../components/Tabs/Tab.vue";
-
+/* import { Tabs, TabPane } from "@/components"; */
 export default {
   name: "profile",
   bodyClass: "profile-page",
   components: {
-    Tabs,
-    TabPane,
-    SignupForm,
+    /*Tabs,
+    TabPane, */
   },
 };
 </script>

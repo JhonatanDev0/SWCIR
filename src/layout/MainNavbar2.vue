@@ -13,7 +13,7 @@
         class="navbar-brand"
         to="/"
       >
-        SWCIR
+        <i class="now-ui-icons education_atom"></i> SWCIR
       </router-link>
       <el-popover
         ref="popover1"
@@ -34,16 +34,14 @@
         icon="now-ui-icons gestures_tap-01"
         class="nav-item"
       >
+        <nav-link to="/profile">
+          <i class="now-ui-icons users_single-02"></i> Meus Dados
+        </nav-link>
+        <nav-link to="/profileadd">
+          <i class="now-ui-icons ui-1_simple-add"></i> Cadastrar Dados
+        </nav-link>
         <nav-link to="/">
-          <n-button
-            type="neutral"
-            round
-            style="color: black"
-            v-if="$auth.isAuthenticated"
-            @click="logout"
-          >
-            <i class="now-ui-icons ui-1_simple-remove"></i> Sair
-          </n-button>
+          <i class="now-ui-icons ui-1_simple-remove"></i> Sair
         </nav-link>
       </drop-down>
     </template>
@@ -64,14 +62,6 @@ export default {
     Navbar,
     NavLink,
     [Popover.name]: Popover,
-  },
-  methods: {
-    // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin,
-      });
-    },
   },
 };
 </script>
