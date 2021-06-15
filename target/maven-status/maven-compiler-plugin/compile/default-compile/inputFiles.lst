@@ -8,6 +8,7 @@ D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\Paga
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\RendimentoController.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\UserRepository.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoBemController.java
+D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\Reports\BensReports.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoPagamentoController.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\TipoPagamentoRepository.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Favorecido.java
@@ -15,6 +16,7 @@ D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Bem.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\TipoBem.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\RendimentoRepository.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\PagamentoRepository.java
+D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\Reports\RendimentosReports.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoRendimentoController.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\SwcirSystemApplication.java
 D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\FavorecidoController.java

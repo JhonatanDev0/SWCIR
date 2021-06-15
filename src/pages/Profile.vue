@@ -91,6 +91,11 @@
     </div>
     <div>
       <h4 class="title text-center">Meus Dados</h4>
+      <p class="title text-center">{{nome}}</p>
+      <p class="title text-center">{{email}}</p>
+    </div>
+    <div>
+      
     </div>
     <!-- <div class="section">
       <div class="container">
@@ -222,7 +227,9 @@
   </div>
 </template>
 <script>
+import userServices from '../../bin/src/services/users';
 /* import { Tabs, TabPane } from "@/components"; */
+import userServicesCont from '../services/users';
 export default {
   name: "profile",
   bodyClass: "profile-page",
@@ -230,6 +237,32 @@ export default {
     /*Tabs,
     TabPane, */
   },
+  data() {
+    return {
+      nome: '',
+      email: '',
+      user_id: '',
+    } 
+  },
+  beforeMount() {
+    this.mostrarDadoCont();
+  },
+  methods: {
+    mostrarDadoCont() {
+      //userServicesCont.puxarDadoContribuinte().then(r => console.log(r.data)).catch(error => console.log(error.message))
+      userServicesCont.puxarDadoContribuinte().then(r => {
+        const dados = r.data;
+        this.nome = dados[0].name;
+        this.email = dados[0].email;
+        console.log(dados)
+      })
+    }
+  },
+    excluirDado() {
+      userServicesCont.excluirDadoContribuinte(user_id).then(r => {
+        window.alert("Usuário Excluído");
+      }).catch(error => console.log(error.message))
+    }
 };
 </script>
 <style> 
