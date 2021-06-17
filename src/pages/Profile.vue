@@ -52,50 +52,56 @@
           empresa pagará de imposto.</b
         >
       </p>
-      <table class="styled-table" border="3" style="width: 50% !important; margin: auto;">
+      <table
+        class="styled-table"
+        border="3"
+        style="width: 50% !important; margin: auto"
+      >
         <thead>
-        <tr>
-          <td><b>BASE DE CÁLCULO (R$)</b></td>
-          <td><b>ALÍQUOTA (%)</b></td>
-          <td><b>PARCELA A DEDUZIR DO IRPF</b></td>
-        </tr>
+          <tr>
+            <td><b>BASE DE CÁLCULO (R$)</b></td>
+            <td><b>ALÍQUOTA (%)</b></td>
+            <td><b>PARCELA A DEDUZIR DO IRPF</b></td>
+          </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Até 1.903,98</td>
-          <td>isento</td>
-          <td>isento</td>
-        </tr>
-        <tr>
-          <td>De 1.903,99 até 2.826,65</td>
-          <td>7,5%</td>
-          <td>R$142,80</td>
-        </tr>
-        <tr>
-          <td>De 2.826,66 até 3.751,05</td>
-          <td>15%</td>
-          <td>R$354,80</td>
-        </tr>
-        <tr>
-          <td>De 3.751,06 até 4.664,68</td>
-          <td>22,5%</td>
-          <td>R$636,13</td>
-        </tr>
-        <tr>
-          <td>Acima de 4.664,68</td>
-          <td>27,5%</td>
-          <td>R$869,36</td>
-        </tr>
+          <tr>
+            <td>Até 1.903,98</td>
+            <td>isento</td>
+            <td>isento</td>
+          </tr>
+          <tr>
+            <td>De 1.903,99 até 2.826,65</td>
+            <td>7,5%</td>
+            <td>R$142,80</td>
+          </tr>
+          <tr>
+            <td>De 2.826,66 até 3.751,05</td>
+            <td>15%</td>
+            <td>R$354,80</td>
+          </tr>
+          <tr>
+            <td>De 3.751,06 até 4.664,68</td>
+            <td>22,5%</td>
+            <td>R$636,13</td>
+          </tr>
+          <tr>
+            <td>Acima de 4.664,68</td>
+            <td>27,5%</td>
+            <td>R$869,36</td>
+          </tr>
         </tbody>
       </table>
     </div>
     <div>
       <h4 class="title text-center">Meus Dados</h4>
-      <p class="title text-center">{{nome}}</p>
-      <p class="title text-center">{{email}}</p>
     </div>
-    <div>
-      
+    <div class="card">
+        <div class="container">
+          <h3 class="text-center">nome: {{nome}}</h3>
+          <h3 class="text-center">email: {{email}}</h3>
+
+        </div>
     </div>
     <!-- <div class="section">
       <div class="container">
@@ -222,14 +228,14 @@
         </div>
       </div>
     </div> -->
-    
-    <br>
+
+    <br />
   </div>
 </template>
 <script>
-import userServices from '../../bin/src/services/users';
+import userServices from "../../bin/src/services/users";
 /* import { Tabs, TabPane } from "@/components"; */
-import userServicesCont from '../services/users';
+import userServicesCont from "../services/users";
 export default {
   name: "profile",
   bodyClass: "profile-page",
@@ -239,10 +245,10 @@ export default {
   },
   data() {
     return {
-      nome: '',
-      email: '',
-      user_id: '',
-    } 
+      nome: "",
+      email: "",
+      user_id: "",
+    };
   },
   beforeMount() {
     this.mostrarDadoCont();
@@ -250,44 +256,64 @@ export default {
   methods: {
     mostrarDadoCont() {
       //userServicesCont.puxarDadoContribuinte().then(r => console.log(r.data)).catch(error => console.log(error.message))
-      userServicesCont.puxarDadoContribuinte().then(r => {
+      userServicesCont.puxarDadoContribuinte().then((r) => {
         const dados = r.data;
         this.nome = dados[0].name;
         this.email = dados[0].email;
-        console.log(dados)
-      })
-    }
+        console.log(dados);
+      });
+    },
   },
-    excluirDado() {
-      userServicesCont.excluirDadoContribuinte(user_id).then(r => {
+  excluirDado() {
+    userServicesCont
+      .excluirDadoContribuinte(user_id)
+      .then((r) => {
         window.alert("Usuário Excluído");
-      }).catch(error => console.log(error.message))
-    }
+      })
+      .catch((error) => console.log(error.message));
+  },
 };
 </script>
-<style> 
+<style>
 .styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .styled-table thead tr {
-    background-color: #2CA8FF;
-    color: #ffffff;
-    text-align: left;
+  background-color: #2ca8ff;
+  color: #ffffff;
+  text-align: left;
 }
 
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 .styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
+  font-weight: bold;
+  color: #009879;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+  
 }
 </style>

@@ -50,6 +50,7 @@
               class="no-border"
               placeholder="Data de Nascimento..."
               addon-left-icon="now-ui-icons ui-1_calendar-60"
+              type="date_time"
               v-model="dataNasc"
             >
             </fg-input>
@@ -382,7 +383,7 @@ export default {
 </script>
 <style>
 .containerPag{
-  right: 1110px;
-  position: absolute;
+  right: -75px;
+  position: relative;
 }
 </style>
