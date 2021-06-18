@@ -96,12 +96,25 @@
     <div>
       <h4 class="title text-center">Meus Dados</h4>
     </div>
-    <div class="card">
-        <div class="container">
-          <h3 class="text-center">nome: {{nome}}</h3>
-          <h3 class="text-center">email: {{email}}</h3>
-
+    <div class="a-box">
+      <div class="text-container">
+        <h3>Contribuinte 1</h3>
+        <div class="textp">
+          <p><b>Id:</b> {{id}}</p>
+          <p><b>Nome:</b> {{nome}}</p>
+          <p><b>Email: </b>{{email}}</p>
+          <p><b>Cpf:</b> {{cpf}}</p>
+          <p><b>Data:</b> {{data}}</p>
+          <p><b>Ocupação:</b> {{ocupacao}}</p>
+          <p><b>Número Pis/Pasep:</b> {{pispasep}}</p>
+          <p><b>Número Dependentes:</b> {{numDep}}</p>
+          <p><b>Número Recibo Anterior:</b> {{numRecibo}}</p>
+          <p><b>Natureza Ocupação:</b> {{natOcup}}</p>
+          <p><b>Título Eleitoral:</b> {{tituEleitoral}}</p>
         </div>
+        <n-button class="btn" style="color:white; background-color:red" v-on:click="excluirDado"><i class="now-ui-icons ui-1_simple-remove"></i></n-button>
+        <n-button class="btn" style="color:white; background-color:green"><i class="now-ui-icons design-2_ruler-pencil"></i></n-button>
+      </div>
     </div>
     <!-- <div class="section">
       <div class="container">
@@ -233,13 +246,14 @@
   </div>
 </template>
 <script>
-import userServices from "../../bin/src/services/users";
 /* import { Tabs, TabPane } from "@/components"; */
+import { Button } from '@/components';
 import userServicesCont from "../services/users";
 export default {
   name: "profile",
   bodyClass: "profile-page",
   components: {
+    [Button.name]: Button,
     /*Tabs,
     TabPane, */
   },
@@ -247,7 +261,15 @@ export default {
     return {
       nome: "",
       email: "",
-      user_id: "",
+      id: "",
+      cpf: "",
+      data: "",
+      ocupacao: "",
+      pispasep: "",
+      numDep: "",
+      numRecibo: "",
+      tituEleitoral: "",
+      natOcup: "",
     };
   },
   beforeMount() {
@@ -258,15 +280,24 @@ export default {
       //userServicesCont.puxarDadoContribuinte().then(r => console.log(r.data)).catch(error => console.log(error.message))
       userServicesCont.puxarDadoContribuinte().then((r) => {
         const dados = r.data;
+        this.id = dados[0].userId;
         this.nome = dados[0].name;
         this.email = dados[0].email;
+        this.cpf = dados[0].cpf;
+        this.data = dados[0].dataNasc;
+        this.ocupacao = dados[0].ocupacao;
+        this.pispasep = dados[0].nitPisPasep;
+        this.numDep = dados[0].numDependentes;
+        this.numRecibo = dados[0].numReciboAnterior;
+        this.tituEleitoral = dados[0].tituloEleitoral;
+        this.natOcup = dados[0].natOcupacao;
         console.log(dados);
       });
     },
   },
   excluirDado() {
     userServicesCont
-      .excluirDadoContribuinte(user_id)
+      .excluirDadoContribuinte(userId)
       .then((r) => {
         window.alert("Usuário Excluído");
       })
@@ -300,20 +331,31 @@ export default {
   color: #009879;
 }
 
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+.a-box {
+  display: inline-block;
+  width: 240px;
+  text-align: center;
 }
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.text-container {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 5px 20px 20px 20px;
+  border-radius: 20px;
+  background: #fff;
+  position: absolute;
+  left: 815px;
+  line-height: 19px;
+  font-size: 14px;
 }
-
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
-  
+.textp{
+  text-align: left;
+}
+.text-container h3 {
+  margin: 20px 0px 10px 0px;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+}
+.buttonedit{
+  border-radius: 100px;
 }
 </style>
