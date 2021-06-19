@@ -348,8 +348,8 @@ export default {
   padding: 5px 20px 20px 20px;
   border-radius: 20px;
   background: #fff;
-  position: absolute;
-  left: 815px;
+  position: relative;
+  left: 825px;
   line-height: 19px;
   font-size: 14px;
 }
