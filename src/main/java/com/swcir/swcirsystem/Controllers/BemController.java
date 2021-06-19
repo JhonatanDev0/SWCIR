@@ -61,11 +61,11 @@ public class BemController {
     @PostMapping("/")
         public ResponseEntity<Bens> create(@RequestBody Bens bem) {
             
-            TiposBem tipoBem = bem.getTipoBem() == null ? null : tipoBemRepository.getOne(bem.getUsers().getUserId());
+            TiposBem tipoBem = bem.getTipoBem() == null ? null : tipoBemRepository.getOne(bem.getUser().getUserId());
             bem.setTipoBem(tipoBem);
             Bens createdBem = bemRepository.save(bem);  
             
-            if (createdBem == null || createdBem.getTipoBem().getTipoBemId() == null || createdBem.getUsers().getUserId() == null ) {
+            if (createdBem == null || createdBem.getTipoBem().getTipoBemId() == null || createdBem.getUser().getUserId() == null ) {
                 return ResponseEntity.notFound().build();
             } else {
                 URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
