@@ -77,10 +77,14 @@
               v-model="numDependentes"
             >
             </fg-input>
-
           </template>
           <div class="card-footer text-center">
-            <n-button type="neutral" round size="lg" style="color: black" v-on:click="enviarDadosCont"
+            <n-button
+              type="neutral"
+              round
+              size="lg"
+              style="color: black"
+              v-on:click="enviarDadosCont"
               >Cadastrar</n-button
             >
           </div>
@@ -96,6 +100,22 @@
             <h3 class="card-title title-up">Cadastro Rendimentos</h3>
           </template>
           <template>
+            <fg-input
+              class="no-border"
+              placeholder="Tipo Rendimento..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="tipoRend"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
+              placeholder="Vinculo Contribuinte..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="vinCont"
+            >
+            </fg-input>
+
             <fg-input
               class="no-border"
               placeholder="Fonte do Pagamento..."
@@ -129,7 +149,12 @@
             </fg-input>
           </template>
           <div class="card-footer text-center">
-            <n-button type="neutral" round size="lg" style="color: black" v-on:click="enviarDadosRend"
+            <n-button
+              type="neutral"
+              round
+              size="lg"
+              style="color: black"
+              v-on:click="enviarDadosRend"
               >Cadastrar</n-button
             >
           </div>
@@ -145,6 +170,22 @@
             <h3 class="card-title title-up">Cadastro Bens</h3>
           </template>
           <template>
+            <fg-input
+              class="no-border"
+              placeholder="Tipo Bem..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="tipoBem"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
+              placeholder="Vinculo Contribuinte..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="vinCont"
+            >
+            </fg-input>
+
             <fg-input
               class="no-border"
               placeholder="Documento Referente..."
@@ -178,7 +219,12 @@
             </fg-input>
           </template>
           <div class="card-footer text-center">
-            <n-button type="neutral" round size="lg" style="color: black" v-on:click="enviarDadosBens"
+            <n-button
+              type="neutral"
+              round
+              size="lg"
+              style="color: black"
+              v-on:click="enviarDadosBens"
               >Cadastrar</n-button
             >
           </div>
@@ -186,7 +232,7 @@
       </div>
       <div class="col text-center"></div>
     </div>
-<br>
+    <br />
     <div class="containerPag">
       <div class="row pull-left">
         <card class="card-signup" header-classes="text-center" color="black">
@@ -194,6 +240,30 @@
             <h3 class="card-title title-up">Cadastro Pagamentos</h3>
           </template>
           <template>
+            <fg-input
+              class="no-border"
+              placeholder="Tipo Pagamento..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="tipoPag"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
+              placeholder="Vinculo Contribuinte..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="vinCont"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
+              placeholder="Vinculo Favorecido..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="vinFav"
+            >
+            </fg-input>
+
             <fg-input
               class="no-border"
               placeholder="Realizado Com..."
@@ -211,7 +281,12 @@
             </fg-input>
           </template>
           <div class="card-footer text-center">
-            <n-button type="neutral" round size="lg" style="color: black" v-on:click="enviarDadosPag"
+            <n-button
+              type="neutral"
+              round
+              size="lg"
+              style="color: black"
+              v-on:click="enviarDadosPag"
               >Cadastrar</n-button
             >
           </div>
@@ -219,7 +294,7 @@
       </div>
       <div class="col text-center"></div>
     </div>
-<br>
+    <br />
     <div class="container">
       <div class="row pull-right">
         <card class="card-signup" header-classes="text-center" color="black">
@@ -244,7 +319,12 @@
             </fg-input>
           </template>
           <div class="card-footer text-center">
-            <n-button type="neutral" round size="lg" style="color: black" v-on:click="enviarDadosFav"
+            <n-button
+              type="neutral"
+              round
+              size="lg"
+              style="color: black"
+              v-on:click="enviarDadosFav"
               >Cadastrar</n-button
             >
           </div>
@@ -273,7 +353,7 @@ export default {
       email: "",
       ocupacao: "",
       cpf: "",
-      dataNasc: Date,
+      dataNasc: "",
       nitPisPasep: "",
       tituloEleitoral: "",
       numDependentes: "",
@@ -289,6 +369,11 @@ export default {
       valorPago: "",
       docFav: "",
       nomeFav: "",
+      tipoRend: "",
+      tipoBem: "",
+      tipoPag: "",
+      vinFav: "",
+      vinCont: "",
     };
   },
   methods: {
@@ -303,15 +388,14 @@ export default {
         dataNasc: this.dataNasc,
         nitPisPasep: this.nitPisPasep,
         tituloEleitoral: this.tituloEleitoral,
-        numDependentes: this.numDependentes
+        numDependentes: this.numDependentes,
       };
       userServicesCont
         .cadastrarContribuinte(body)
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
-
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosRend(e) {
       e.preventDefault();
@@ -320,15 +404,14 @@ export default {
         tipoFontPag: this.tipoFontPag,
         docFontPag: this.docFontPag,
         nomeFontPag: this.nomeFontPag,
-        valorRend: this.valorRend
+        valorRend: this.valorRend,
       };
       userServicesRend
         .cadastrarRendimentos(body)
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
-
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosBens(e) {
       e.preventDefault();
@@ -337,52 +420,74 @@ export default {
         docRef: this.docRef,
         valorDoisAnos: this.valorDoisAnos,
         valorAnoAnt: this.valorAnoAnt,
-        discriminacao: this.discriminacao
+        discriminacao: this.discriminacao,
       };
       userServicesBens
         .cadastrarBens(body)
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
-
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosPag(e) {
       e.preventDefault();
       console.log(e);
       const body = {
         realizadoCom: this.realizadoCom,
-        valorPago: this.valorPago
+        valorPago: this.valorPago,
       };
       userServicesPag
         .cadastrarPagamentos(body)
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
-
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosFav(e) {
       e.preventDefault();
       console.log(e);
       const body = {
         docFav: this.docFav,
-        nomeFav: this.nomeFav
+        nomeFav: this.nomeFav,
       };
       userServicesFav
         .cadastrarFavorecidos(body)
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
-
+        .catch((r) => alert("Dados não enviados"));
+    },
+    mostrarVinBem(e) {
+      userServicesBens.puxarDadoBem().then((r) => {
+        const dados = r.data;
+        this.tipoBem = dados[0].tipo_bem_id;
+        this.vinCont = dados[0].user_id;
+        console.log(dados);
+      });
+    },
+    mostrarVinRend(e) {
+      userServicesRend.puxarDadoRend().then((r) => {
+        const dados = r.data;
+        this.tipoRend = dados[0].tipo_rend_id;
+        this.vinCont = dados[0].user_id;
+        console.log(dados);
+      });
+    },
+    mostrarVinPag(e) {
+      userServicesPag.puxarDadoPag().then((r) => {
+        const dados = r.data;
+        this.tipoBem = dados[0].tipo_pag_id;
+        this.vinCont = dados[0].user_id;
+        this.vinFav = dados[0].fav_id;
+        console.log(dados);
+      });
     },
   },
 };
 </script>
 <style>
-.containerPag{
-  right: 1110px;
-  position: absolute;
+.containerPag {
+  right: -75px;
+  position: relative;
 }
 </style>
