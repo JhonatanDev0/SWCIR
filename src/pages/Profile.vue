@@ -100,20 +100,27 @@
       <div class="text-container">
         <h3>Contribuinte 1</h3>
         <div class="textp">
-          <p><b>Id:</b> {{id}}</p>
-          <p><b>Nome:</b> {{nome}}</p>
-          <p><b>Email: </b>{{email}}</p>
-          <p><b>Cpf:</b> {{cpf}}</p>
-          <p><b>Data:</b> {{data}}</p>
-          <p><b>Ocupação:</b> {{ocupacao}}</p>
-          <p><b>Número Pis/Pasep:</b> {{pispasep}}</p>
-          <p><b>Número Dependentes:</b> {{numDep}}</p>
-          <p><b>Número Recibo Anterior:</b> {{numRecibo}}</p>
-          <p><b>Natureza Ocupação:</b> {{natOcup}}</p>
-          <p><b>Título Eleitoral:</b> {{tituEleitoral}}</p>
+          <p><b>Id:</b> {{ id }}</p>
+          <p><b>Nome:</b> {{ nome }}</p>
+          <p><b>Email: </b>{{ email }}</p>
+          <p><b>Cpf:</b> {{ cpf }}</p>
+          <p><b>Data:</b> {{ data }}</p>
+          <p><b>Ocupação:</b> {{ ocupacao }}</p>
+          <p><b>Número Pis/Pasep:</b> {{ pispasep }}</p>
+          <p><b>Número Dependentes:</b> {{ numDep }}</p>
+          <p><b>Número Recibo Anterior:</b> {{ numRecibo }}</p>
+          <p><b>Natureza Ocupação:</b> {{ natOcup }}</p>
+          <p><b>Título Eleitoral:</b> {{ tituEleitoral }}</p>
         </div>
-        <n-button class="btn" style="color:white; background-color:red" v-on:click="excluirDado"><i class="now-ui-icons ui-1_simple-remove"></i></n-button>
-        <n-button class="btn" style="color:white; background-color:green"><i class="now-ui-icons design-2_ruler-pencil"></i></n-button>
+        <n-button
+          class="btn"
+          style="color: white; background-color: red"
+          v-on:click="excluirDado"
+          ><i class="now-ui-icons ui-1_simple-remove"></i
+        ></n-button>
+        <n-button class="btn" style="color: white; background-color: green"
+          ><i class="now-ui-icons design-2_ruler-pencil"></i
+        ></n-button>
       </div>
     </div>
     <!-- <div class="section">
@@ -247,7 +254,7 @@
 </template>
 <script>
 /* import { Tabs, TabPane } from "@/components"; */
-import { Button } from '@/components';
+import { Button } from "@/components";
 import userServicesCont from "../services/users";
 export default {
   name: "profile",
@@ -294,14 +301,14 @@ export default {
         console.log(dados);
       });
     },
-  },
-  excluirDado() {
-    userServicesCont
-      .excluirDadoContribuinte(userId)
-      .then((r) => {
-        window.alert("Usuário Excluído");
-      })
-      .catch((error) => console.log(error.message));
+    excluirDado() {
+      userServicesCont
+        .excluirDadoContribuinte(this.id)
+        .then((r) => {
+          window.alert("Usuário Excluído");
+        })
+        .catch((error) => console.log(error.message));
+    },
   },
 };
 </script>
@@ -346,7 +353,7 @@ export default {
   line-height: 19px;
   font-size: 14px;
 }
-.textp{
+.textp {
   text-align: left;
 }
 .text-container h3 {
@@ -355,7 +362,7 @@ export default {
   font-size: 18px;
   font-weight: bold;
 }
-.buttonedit{
+.buttonedit {
   border-radius: 100px;
 }
 </style>

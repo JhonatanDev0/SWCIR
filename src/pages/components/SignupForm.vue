@@ -395,7 +395,7 @@ export default {
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosRend(e) {
       e.preventDefault();
@@ -411,7 +411,7 @@ export default {
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosBens(e) {
       e.preventDefault();
@@ -427,7 +427,7 @@ export default {
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosPag(e) {
       e.preventDefault();
@@ -441,7 +441,7 @@ export default {
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
+        .catch((r) => alert("Dados não enviados"));
     },
     enviarDadosFav(e) {
       e.preventDefault();
@@ -455,7 +455,7 @@ export default {
         .then((r) => {
           alert("Dados enviados");
         })
-        .catch((r) => alert.error("Dados não enviados"));
+        .catch((r) => alert("Dados não enviados"));
     },
     mostrarVinBem(e) {
       userServicesBens.puxarDadoBem().then((r) => {
