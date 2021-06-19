@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.TipoRendimento;
+import com.swcir.swcirsystem.Models.TiposRendimento;
 import com.swcir.swcirsystem.Repositories.TipoRendimentoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,8 @@ public class TipoRendimentoController {
     private TipoRendimentoRepository tRRepository;
 
     @GetMapping(path="/")
-    public Iterable<TipoRendimento> get(){
-        Iterable<TipoRendimento> listTipoRendimentos = this.tRRepository.findAll();
+    public Iterable<TiposRendimento> get(){
+        Iterable<TiposRendimento> listTipoRendimentos = this.tRRepository.findAll();
 
         if (listTipoRendimentos == null) {
             throw new EmptyResultDataAccessException("Nenhum Tipo de Rendimento encontrado", 1);
@@ -41,9 +41,9 @@ public class TipoRendimentoController {
     }
     
     @GetMapping(path="/{tipoRendId}")
-    public TipoRendimento getById(@PathVariable Integer tipoRendId){
+    public TiposRendimento getById(@PathVariable Integer tipoRendId){
         
-        TipoRendimento tRRecovered = new TipoRendimento();
+        TiposRendimento tRRecovered = new TiposRendimento();
 
         try {
             tRRecovered = this.tRRepository.findById(tipoRendId).get();
@@ -54,9 +54,9 @@ public class TipoRendimentoController {
     }
 
     @PostMapping("/")
-        public ResponseEntity<TipoRendimento> create(@RequestBody TipoRendimento tipoRendimento) 
+        public ResponseEntity<TiposRendimento> create(@RequestBody TiposRendimento tipoRendimento) 
             throws URISyntaxException {
-            TipoRendimento createdTipoRendimento = tRRepository.save(tipoRendimento);
+            TiposRendimento createdTipoRendimento = tRRepository.save(tipoRendimento);
             if (createdTipoRendimento == null || createdTipoRendimento.getNomeTipoRend().isEmpty() ) {
                 return ResponseEntity.notFound().build();
             } else {
@@ -71,8 +71,8 @@ public class TipoRendimentoController {
         }
 
         @PutMapping("/{tipoRendId}")
-        public ResponseEntity<TipoRendimento> update(@RequestBody TipoRendimento tipoRendimento, @PathVariable Integer tipoRendId) {
-            TipoRendimento updatedTipoRendimento = tRRepository.getOne(tipoRendId);
+        public ResponseEntity<TiposRendimento> update(@RequestBody TiposRendimento tipoRendimento, @PathVariable Integer tipoRendId) {
+            TiposRendimento updatedTipoRendimento = tRRepository.getOne(tipoRendId);
             if(updatedTipoRendimento != null){
                 tipoRendimento.setTipoRendId(tipoRendId);
                 tRRepository.save(tipoRendimento);
@@ -85,7 +85,7 @@ public class TipoRendimentoController {
         @DeleteMapping(path="/{tipoRendId}")
         public String delete(@PathVariable Integer tipoRendId){
 
-            TipoRendimento tRToBeDeleted = new TipoRendimento();
+            TiposRendimento tRToBeDeleted = new TiposRendimento();
             tRToBeDeleted = this.getById(tipoRendId);
 
             if(tRToBeDeleted == null){

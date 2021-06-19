@@ -3,8 +3,8 @@ package com.swcir.swcirsystem.Controllers;
 import java.net.URI;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.Pagamento;
-import com.swcir.swcirsystem.Models.TipoPagamento;
+import com.swcir.swcirsystem.Models.Pagamentos;
+import com.swcir.swcirsystem.Models.TiposPagamento;
 import com.swcir.swcirsystem.Repositories.PagamentoRepository;
 import com.swcir.swcirsystem.Repositories.TipoPagamentoRepository;
 
@@ -35,8 +35,8 @@ public class PagamentoController {
     private TipoPagamentoRepository tipoPagamentoRepository;
 
     @GetMapping(path="/")
-    public Iterable<Pagamento> get(){
-        Iterable<Pagamento> listPagamentos = this.pagamentoRepository.findAll();
+    public Iterable<Pagamentos> get(){
+        Iterable<Pagamentos> listPagamentos = this.pagamentoRepository.findAll();
 
         if (listPagamentos == null) {
             throw new EmptyResultDataAccessException("Nenhum Pagamento encontrado", 1);
@@ -46,9 +46,9 @@ public class PagamentoController {
     }
 
     @GetMapping(path="/{pagId}")
-    public Pagamento getById(@PathVariable Integer pagId){
+    public Pagamentos getById(@PathVariable Integer pagId){
         
-        Pagamento pagRecovered = new Pagamento();
+        Pagamentos pagRecovered = new Pagamentos();
 
         try {
             pagRecovered = this.pagamentoRepository.findById(pagId).get();
@@ -59,11 +59,11 @@ public class PagamentoController {
     }
     
     @PostMapping("/")
-        public ResponseEntity<Pagamento> create(@RequestBody Pagamento pagamento) {
+        public ResponseEntity<Pagamentos> create(@RequestBody Pagamentos pagamento) {
             
-            TipoPagamento tipoPagamento = pagamento.getTipoPagamento() == null ? null : tipoPagamentoRepository.getOne(pagamento.getUser().getUserId());
+            TiposPagamento tipoPagamento = pagamento.getTipoPagamento() == null ? null : tipoPagamentoRepository.getOne(pagamento.getUser().getUserId());
             pagamento.setTipoPagamento(tipoPagamento);
-            Pagamento createdPagamento = pagamentoRepository.save(pagamento);  
+            Pagamentos createdPagamento = pagamentoRepository.save(pagamento);  
             
             if (createdPagamento == null || createdPagamento.getTipoPagamento().getTipoPagId() == null || createdPagamento.getUser().getUserId() == null ) {
                 return ResponseEntity.notFound().build();
@@ -79,8 +79,8 @@ public class PagamentoController {
         }
 
         @PutMapping("/{pagId}")
-        public ResponseEntity<Pagamento> update(@RequestBody Pagamento pagamento, @PathVariable Integer pagId) {
-            Pagamento updatedPagamento = pagamentoRepository.getOne(pagId);
+        public ResponseEntity<Pagamentos> update(@RequestBody Pagamentos pagamento, @PathVariable Integer pagId) {
+            Pagamentos updatedPagamento = pagamentoRepository.getOne(pagId);
             if(updatedPagamento != null){
                 pagamento.setPagId(pagId);
                 pagamentoRepository.save(pagamento);
@@ -93,7 +93,7 @@ public class PagamentoController {
         @DeleteMapping(path="/{pagId}")
         public String delete(@PathVariable Integer pagId){
 
-            Pagamento pagToBeDeleted = new Pagamento();
+            Pagamentos pagToBeDeleted = new Pagamentos();
             pagToBeDeleted = this.getById(pagId);
 
             if(pagToBeDeleted == null){

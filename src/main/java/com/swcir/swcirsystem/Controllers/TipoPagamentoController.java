@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.TipoPagamento;
+import com.swcir.swcirsystem.Models.TiposPagamento;
 import com.swcir.swcirsystem.Repositories.TipoPagamentoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ public class TipoPagamentoController {
     private TipoPagamentoRepository tPRepository;
 
     @GetMapping(path="/")
-    public Iterable<TipoPagamento> get(){
-        Iterable<TipoPagamento> listTipoPagamentos = this.tPRepository.findAll();
+    public Iterable<TiposPagamento> get(){
+        Iterable<TiposPagamento> listTipoPagamentos = this.tPRepository.findAll();
 
         if (listTipoPagamentos == null) {
             throw new EmptyResultDataAccessException("Nenhum Tipo de Pagamento encontrado", 1);
@@ -43,9 +43,9 @@ public class TipoPagamentoController {
     }
     
     @GetMapping(path="/{tipoPagId}")
-    public TipoPagamento getById(@PathVariable Integer tipoPagId){
+    public TiposPagamento getById(@PathVariable Integer tipoPagId){
         
-        TipoPagamento tPRecovered = new TipoPagamento();
+        TiposPagamento tPRecovered = new TiposPagamento();
 
         try {
             tPRecovered = this.tPRepository.findById(tipoPagId).get();
@@ -56,9 +56,9 @@ public class TipoPagamentoController {
     }
 
     @PostMapping("/")
-        public ResponseEntity<TipoPagamento> create(@RequestBody TipoPagamento tipoPagamento) 
+        public ResponseEntity<TiposPagamento> create(@RequestBody TiposPagamento tipoPagamento) 
             throws URISyntaxException {
-            TipoPagamento createdTipoPagamento = tPRepository.save(tipoPagamento);
+            TiposPagamento createdTipoPagamento = tPRepository.save(tipoPagamento);
             if (createdTipoPagamento == null || createdTipoPagamento.getNomeTipoPag().isEmpty() ) {
                 return ResponseEntity.notFound().build();
             } else {
@@ -73,8 +73,8 @@ public class TipoPagamentoController {
         }
 
         @PutMapping("/{tipoPagId}")
-        public ResponseEntity<TipoPagamento> update(@RequestBody TipoPagamento tipoPagamento, @PathVariable Integer tipoPagId) {
-            TipoPagamento updatedTipoPagamento = tPRepository.getOne(tipoPagId);
+        public ResponseEntity<TiposPagamento> update(@RequestBody TiposPagamento tipoPagamento, @PathVariable Integer tipoPagId) {
+            TiposPagamento updatedTipoPagamento = tPRepository.getOne(tipoPagId);
             if(updatedTipoPagamento != null){
                 tipoPagamento.setTipoPagId(tipoPagId);
                 tPRepository.save(tipoPagamento);
@@ -87,7 +87,7 @@ public class TipoPagamentoController {
         @DeleteMapping(path="/{tipoPagId}")
         public String delete(@PathVariable Integer tipoPagId){
 
-            TipoPagamento tPToBeDeleted = new TipoPagamento();
+            TiposPagamento tPToBeDeleted = new TiposPagamento();
             tPToBeDeleted = this.getById(tipoPagId);
 
             if(tPToBeDeleted == null){

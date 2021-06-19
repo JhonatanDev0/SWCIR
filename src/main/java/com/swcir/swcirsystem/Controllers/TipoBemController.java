@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.TipoBem;
+import com.swcir.swcirsystem.Models.TiposBem;
 import com.swcir.swcirsystem.Repositories.TipoBemRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,8 @@ public class TipoBemController {
     private TipoBemRepository tBRepository;
 
     @GetMapping(path="/")
-    public Iterable<TipoBem> get(){
-        Iterable<TipoBem> listTipoBens = this.tBRepository.findAll();
+    public Iterable<TiposBem> get(){
+        Iterable<TiposBem> listTipoBens = this.tBRepository.findAll();
 
         if (listTipoBens == null) {
             throw new EmptyResultDataAccessException("Nenhum Tipo de Bem encontrado", 1);
@@ -41,9 +41,9 @@ public class TipoBemController {
     }
 
     @GetMapping(path="/{tipoBemId}")
-    public TipoBem getById(@PathVariable Integer tipoBemId){
+    public TiposBem getById(@PathVariable Integer tipoBemId){
         
-        TipoBem tBRecovered = new TipoBem();
+        TiposBem tBRecovered = new TiposBem();
 
         try {
             tBRecovered = this.tBRepository.findById(tipoBemId).get();
@@ -54,9 +54,9 @@ public class TipoBemController {
     }
 
     @PostMapping("/")
-        public ResponseEntity<TipoBem> create(@RequestBody TipoBem tipoBem) 
+        public ResponseEntity<TiposBem> create(@RequestBody TiposBem tipoBem) 
             throws URISyntaxException {
-            TipoBem createdTipoBem = tBRepository.save(tipoBem);
+            TiposBem createdTipoBem = tBRepository.save(tipoBem);
             if (createdTipoBem == null || createdTipoBem.getNomeTipoBem().isEmpty() ) {
                 return ResponseEntity.notFound().build();
             } else {
@@ -71,8 +71,8 @@ public class TipoBemController {
         }
 
         @PutMapping("/{tipoBemId}")
-        public ResponseEntity<TipoBem> update(@RequestBody TipoBem tipoBem, @PathVariable Integer tipoBemId) {
-            TipoBem updatedTipoBem = tBRepository.getOne(tipoBemId);
+        public ResponseEntity<TiposBem> update(@RequestBody TiposBem tipoBem, @PathVariable Integer tipoBemId) {
+            TiposBem updatedTipoBem = tBRepository.getOne(tipoBemId);
             if(updatedTipoBem != null){
                 tipoBem.setTipoBemId(tipoBemId);
                 tBRepository.save(tipoBem);
@@ -85,7 +85,7 @@ public class TipoBemController {
         @DeleteMapping(path="/{tipoBemId}")
         public String delete(@PathVariable Integer tipoBemId){
 
-            TipoBem tPToBeDeleted = new TipoBem();
+            TiposBem tPToBeDeleted = new TiposBem();
             tPToBeDeleted = this.getById(tipoBemId);
 
             if(tPToBeDeleted == null){

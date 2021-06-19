@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.Favorecido;
+import com.swcir.swcirsystem.Models.Favorecidos;
 import com.swcir.swcirsystem.Repositories.FavorecidoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,8 @@ public class FavorecidoController {
     private FavorecidoRepository favRepository;
 
     @GetMapping(path="/")
-    public Iterable<Favorecido> get(){
-        Iterable<Favorecido> listFavorecidos = this.favRepository.findAll();
+    public Iterable<Favorecidos> get(){
+        Iterable<Favorecidos> listFavorecidos = this.favRepository.findAll();
 
         if (listFavorecidos == null) {
             throw new EmptyResultDataAccessException("Nenhum Favorecido encontrado", 1);
@@ -42,9 +42,9 @@ public class FavorecidoController {
     }
 
     @GetMapping(path="/{favId}")
-    public Favorecido getById(@PathVariable Integer favId){
+    public Favorecidos getById(@PathVariable Integer favId){
         
-        Favorecido favRecovered = new Favorecido();
+        Favorecidos favRecovered = new Favorecidos();
 
         try {
             favRecovered = this.favRepository.findById(favId).get();
@@ -55,9 +55,9 @@ public class FavorecidoController {
     }
 
     @PostMapping("/")
-        public ResponseEntity<Favorecido> create(@RequestBody Favorecido favorecido) 
+        public ResponseEntity<Favorecidos> create(@RequestBody Favorecidos favorecido) 
             throws URISyntaxException {
-            Favorecido createdFavorecido = favRepository.save(favorecido);
+            Favorecidos createdFavorecido = favRepository.save(favorecido);
             if (createdFavorecido == null || createdFavorecido.getNomeFav().isEmpty() ){
                 return ResponseEntity.notFound().build();
             } else {
@@ -72,8 +72,8 @@ public class FavorecidoController {
         }
 
         @PutMapping("/{favId}")
-        public ResponseEntity<Favorecido> update(@RequestBody Favorecido favorecido, @PathVariable Integer favId) {
-            Favorecido updatedFavorecido = favRepository.getOne(favId);
+        public ResponseEntity<Favorecidos> update(@RequestBody Favorecidos favorecido, @PathVariable Integer favId) {
+            Favorecidos updatedFavorecido = favRepository.getOne(favId);
             if(updatedFavorecido != null){
                 favorecido.setFavId(favId);
                 favRepository.save(favorecido);
@@ -86,7 +86,7 @@ public class FavorecidoController {
         @DeleteMapping(path="/{favId}")
         public String delete(@PathVariable Integer favId){
 
-            Favorecido favToBeDeleted = new Favorecido();
+            Favorecidos favToBeDeleted = new Favorecidos();
             favToBeDeleted = this.getById(favId);
 
             if(favToBeDeleted == null){

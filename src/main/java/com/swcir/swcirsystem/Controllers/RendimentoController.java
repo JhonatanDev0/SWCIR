@@ -3,8 +3,9 @@ package com.swcir.swcirsystem.Controllers;
 import java.net.URI;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.Rendimento;
-import com.swcir.swcirsystem.Models.TipoRendimento;
+
+import com.swcir.swcirsystem.Models.Rendimentos;
+import com.swcir.swcirsystem.Models.TiposRendimento;
 import com.swcir.swcirsystem.Repositories.RendimentoRepository;
 import com.swcir.swcirsystem.Repositories.TipoRendimentoRepository;
 
@@ -34,8 +35,8 @@ public class RendimentoController {
     private TipoRendimentoRepository tipoRendimentoRepository;
 
     @GetMapping(path="/")
-    public Iterable<Rendimento> get(){
-        Iterable<Rendimento> listRendimentos = this.rendimentoRepository.findAll();
+    public Iterable<Rendimentos> get(){
+        Iterable<Rendimentos> listRendimentos = this.rendimentoRepository.findAll();
 
         if (listRendimentos == null) {
             throw new EmptyResultDataAccessException("Nenhum Rendimento encontrado", 1);
@@ -45,9 +46,9 @@ public class RendimentoController {
     }
 
     @GetMapping(path="/{rendId}")
-    public Rendimento getById(@PathVariable Integer rendId){
+    public Rendimentos getById(@PathVariable Integer rendId){
         
-        Rendimento rendRecovered = new Rendimento();
+        Rendimentos rendRecovered = new Rendimentos();
 
         try {
             rendRecovered = this.rendimentoRepository.findById(rendId).get();
@@ -57,12 +58,17 @@ public class RendimentoController {
         return rendRecovered;
     }
 
+    @GetMapping(path="/sum/{userId}")
+    public Double sum(@PathVariable Integer userId){
+        return rendimentoRepository.sumValores(userId);
+    }
+
     @PostMapping("/")
-        public ResponseEntity<Rendimento> create(@RequestBody Rendimento rendimento) {
+        public ResponseEntity<Rendimentos> create(@RequestBody Rendimentos rendimento) {
             
-            TipoRendimento tipoRendimento = rendimento.getTipoRendimento() == null ? null : tipoRendimentoRepository.getOne(rendimento.getUser().getUserId());
+            TiposRendimento tipoRendimento = rendimento.getTipoRendimento() == null ? null : tipoRendimentoRepository.getOne(rendimento.getUser().getUserId());
             rendimento.setTipoRendimento(tipoRendimento);
-            Rendimento createdRendimento = rendimentoRepository.save(rendimento);  
+            Rendimentos createdRendimento = rendimentoRepository.save(rendimento);  
             
             if (createdRendimento == null || createdRendimento.getNomeFontPag().isEmpty() || createdRendimento.getTipoRendimento().getTipoRendId() == null || createdRendimento.getUser().getUserId() == null ) {
                 return ResponseEntity.notFound().build();
@@ -78,8 +84,8 @@ public class RendimentoController {
         }
 
         @PutMapping("/{rendId}")
-        public ResponseEntity<Rendimento> update(@RequestBody Rendimento rendimento, @PathVariable Integer rendId) {
-            Rendimento updatedRendimento = rendimentoRepository.getOne(rendId);
+        public ResponseEntity<Rendimentos> update(@RequestBody Rendimentos rendimento, @PathVariable Integer rendId) {
+            Rendimentos updatedRendimento = rendimentoRepository.getOne(rendId);
             if(updatedRendimento != null){
                 rendimento.setRendId(rendId);
                 rendimentoRepository.save(rendimento);
@@ -92,7 +98,7 @@ public class RendimentoController {
         @DeleteMapping(path="/{rendId}")
         public String delete(@PathVariable Integer rendId){
 
-            Rendimento rendToBeDeleted = new Rendimento();
+            Rendimentos rendToBeDeleted = new Rendimentos();
             rendToBeDeleted = this.getById(rendId);
 
             if(rendToBeDeleted == null){

@@ -1,11 +1,10 @@
 package com.swcir.swcirsystem.Repositories;
 
 
-import com.swcir.swcirsystem.Models.User;
+import com.swcir.swcirsystem.Models.Users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User,Integer> {
+public interface UserRepository extends JpaRepository<Users,Integer> {
 
-    User findUserByEmail(String email);
 }

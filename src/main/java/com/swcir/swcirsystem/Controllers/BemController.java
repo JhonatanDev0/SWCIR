@@ -3,8 +3,8 @@ package com.swcir.swcirsystem.Controllers;
 import java.net.URI;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.Bem;
-import com.swcir.swcirsystem.Models.TipoBem;
+import com.swcir.swcirsystem.Models.Bens;
+import com.swcir.swcirsystem.Models.TiposBem;
 import com.swcir.swcirsystem.Repositories.BemRepository;
 import com.swcir.swcirsystem.Repositories.TipoBemRepository;
 
@@ -35,8 +35,8 @@ public class BemController {
     private TipoBemRepository tipoBemRepository;
 
     @GetMapping(path="/")
-    public Iterable<Bem> get(){
-        Iterable<Bem> listBens = this.bemRepository.findAll();
+    public Iterable<Bens> get(){
+        Iterable<Bens> listBens = this.bemRepository.findAll();
 
         if (listBens == null) {
             throw new EmptyResultDataAccessException("Nenhum Bem encontrado", 1);
@@ -46,9 +46,9 @@ public class BemController {
     }
 
     @GetMapping(path="/{bemId}")
-    public Bem getById(@PathVariable Integer bemId){
+    public Bens getById(@PathVariable Integer bemId){
         
-        Bem bemRecovered = new Bem();
+        Bens bemRecovered = new Bens();
 
         try {
             bemRecovered = this.bemRepository.findById(bemId).get();
@@ -59,13 +59,13 @@ public class BemController {
     }
     
     @PostMapping("/")
-        public ResponseEntity<Bem> create(@RequestBody Bem bem) {
+        public ResponseEntity<Bens> create(@RequestBody Bens bem) {
             
-            TipoBem tipoBem = bem.getTipoBem() == null ? null : tipoBemRepository.getOne(bem.getUser().getUserId());
+            TiposBem tipoBem = bem.getTipoBem() == null ? null : tipoBemRepository.getOne(bem.getUsers().getUserId());
             bem.setTipoBem(tipoBem);
-            Bem createdBem = bemRepository.save(bem);  
+            Bens createdBem = bemRepository.save(bem);  
             
-            if (createdBem == null || createdBem.getTipoBem().getTipoBemId() == null || createdBem.getUser().getUserId() == null ) {
+            if (createdBem == null || createdBem.getTipoBem().getTipoBemId() == null || createdBem.getUsers().getUserId() == null ) {
                 return ResponseEntity.notFound().build();
             } else {
                 URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -79,8 +79,8 @@ public class BemController {
         }
 
         @PutMapping("/{bemId}")
-        public ResponseEntity<Bem> update(@RequestBody Bem bem, @PathVariable Integer bemId) {
-            Bem updatedBem = bemRepository.getOne(bemId);
+        public ResponseEntity<Bens> update(@RequestBody Bens bem, @PathVariable Integer bemId) {
+            Bens updatedBem = bemRepository.getOne(bemId);
             if(updatedBem != null){
                 bem.setBemId(bemId);
                 bemRepository.save(bem);
@@ -93,7 +93,7 @@ public class BemController {
         @DeleteMapping(path="/{bemId}")
         public String delete(@PathVariable Integer bemId){
 
-            Bem pagToBeDeleted = new Bem();
+            Bens pagToBeDeleted = new Bens();
             pagToBeDeleted = this.getById(bemId);
 
             if(pagToBeDeleted == null){

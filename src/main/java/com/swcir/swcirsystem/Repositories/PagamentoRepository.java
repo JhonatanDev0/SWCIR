@@ -1,9 +1,9 @@
 package com.swcir.swcirsystem.Repositories;
 
-import com.swcir.swcirsystem.Models.Pagamento;
+import com.swcir.swcirsystem.Models.Pagamentos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PagamentoRepository extends JpaRepository<Pagamento,Integer>{
+public interface PagamentoRepository extends JpaRepository<Pagamentos,Integer>{
     
 }

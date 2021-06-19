@@ -1,25 +1,28 @@
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\UserController.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Pagamento.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\TipoBemRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\TipoRendimento.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\User.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\TipoRendimentoRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\PagamentoController.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\RendimentoController.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\UserRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoBemController.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoPagamentoController.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\TipoPagamentoRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Favorecido.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Bem.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\TipoBem.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\RendimentoRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\PagamentoRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoRendimentoController.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\SwcirSystemApplication.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\FavorecidoController.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\TipoPagamento.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\FavorecidoRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\BemRepository.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Rendimento.java
-D:\Downloads\Projetos\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\BemController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\TipoBemRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\AliquotasRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\TipoPagamentoRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\PagamentoController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\SwcirSystemApplication.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoBemController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Users.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\TipoRendimentoRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\FavorecidoController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Rendimentos.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Favorecidos.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\PagamentoRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\BemController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Aliquotas.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\FavorecidoRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\RendimentoRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\RendimentoController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\UserController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\TiposRendimento.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\AliquotasController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoPagamentoController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Pagamentos.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\TiposPagamento.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Controllers\TipoRendimentoController.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\TiposBem.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\BemRepository.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Models\Bens.java
+D:\dev\Java - Developing\Projeto-Int-ADS\SWCIR\src\main\java\com\swcir\swcirsystem\Repositories\UserRepository.java

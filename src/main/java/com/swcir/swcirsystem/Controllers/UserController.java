@@ -4,7 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.NoSuchElementException;
 
-import com.swcir.swcirsystem.Models.User;
+import com.swcir.swcirsystem.Models.Users;
 import com.swcir.swcirsystem.Repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,8 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping(path="/")
-    public Iterable<User> get(){
-        Iterable<User> listUsers = this.userRepository.findAll();
+    public Iterable<Users> get(){
+        Iterable<Users> listUsers = this.userRepository.findAll();
 
         if (listUsers == null) {
             throw new EmptyResultDataAccessException("Nenhum usuario encontrado", 1);
@@ -42,9 +42,9 @@ public class UserController {
     }
 
     @GetMapping(path="/{userId}")
-    public User getById(@PathVariable int userId){
+    public Users getById(@PathVariable int userId){
         
-        User userRecovered = new User();
+        Users userRecovered = new Users();
 
         try {
             userRecovered = this.userRepository.findById(userId).get();
@@ -55,9 +55,9 @@ public class UserController {
     }
 
     @PostMapping("/")
-        public ResponseEntity<User> create(@RequestBody User user) 
+        public ResponseEntity<Users> create(@RequestBody Users user) 
             throws URISyntaxException {
-            User createdUser = userRepository.save(user);
+            Users createdUser = userRepository.save(user);
             if (createdUser == null || createdUser.getEmail().isEmpty() || createdUser.getName().isEmpty()) {
                 return ResponseEntity.notFound().build();
             } else {
@@ -72,8 +72,8 @@ public class UserController {
         }
 
     @PutMapping("/{userId}")
-        public ResponseEntity<User> update(@RequestBody User user, @PathVariable Integer userId) {
-            User updatedUser = userRepository.getOne(userId);
+        public ResponseEntity<Users> update(@RequestBody Users user, @PathVariable Integer userId) {
+            Users updatedUser = userRepository.getOne(userId);
             if(updatedUser != null){
                 user.setUserId(userId);
                 userRepository.save(user);
@@ -86,7 +86,7 @@ public class UserController {
     @DeleteMapping(path="/{userId}")
         public String delete(@PathVariable int userId){
 
-            User userToBeDeleted = new User();
+            Users userToBeDeleted = new Users();
             userToBeDeleted = this.getById(userId);
 
             if(userToBeDeleted == null){
