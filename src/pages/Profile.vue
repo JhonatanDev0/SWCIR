@@ -118,9 +118,9 @@
           v-on:click="excluirDado"
           ><i class="now-ui-icons ui-1_simple-remove"></i
         ></n-button>
-        <n-button class="btn" style="color: white; background-color: green"
+        <!--<n-button class="btn" style="color: white; background-color: green"
           ><i class="now-ui-icons design-2_ruler-pencil"></i
-        ></n-button>
+        ></n-button> -->
       </div>
     </div>
     <!-- <div class="section">
