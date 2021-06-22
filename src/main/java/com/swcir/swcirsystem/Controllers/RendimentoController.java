@@ -60,8 +60,10 @@ public class RendimentoController {
 
     @GetMapping(path="/sum/{userId}")
     public Double sum(@PathVariable Integer userId){
-        return rendimentoRepository.sumValores(userId);
+        Double sumRendimentos = rendimentoRepository.sumValores(userId);
+        return sumRendimentos;
     }
+         
 
     @PostMapping("/")
         public ResponseEntity<Rendimentos> create(@RequestBody Rendimentos rendimento) {
