@@ -126,9 +126,43 @@
     <div class="a-box2">
       <div class="text-container2">
         <h3>Cálculo do IRPF Simplificado</h3>
-        <!--<n-button class="btn" style="color: white; background-color: green"
-          ><i class="now-ui-icons design-2_ruler-pencil"></i
-        ></n-button> -->
+        <div class="textp2">
+          <p>
+            <b
+              >1) Soma dos rendimentos tributáveis – desconto de 20% =
+              base do calculo</b
+            >
+          </p>
+          <p>
+            <b
+              >2) Alíquota de IR é aplicada sobre esta base de cálculo = imposto
+              devido</b
+            >
+          </p>
+          <p>
+            <b
+              >3) Imposto devido – imposto já pago = imposto a pagar ou a
+              restituir
+            </b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="a-box3">
+      <div class="text-container3">
+        <h3>Resultado do Cálculo</h3>
+        <div class="textp3">
+          <p>
+            <b
+              >Seu resultado do Cálculo irá aparecer abaixo:</b
+            >
+          </p>
+          <p>
+            <b
+              >R$: {{resultadoSoma}}</b
+            >
+          </p>
+        </div>
       </div>
     </div>
     <!-- <div class="section">
@@ -264,6 +298,7 @@
 /* import { Tabs, TabPane } from "@/components"; */
 import { Button } from "@/components";
 import userServicesCont from "../services/users";
+import userServicesRend from "../services/rendimentos";
 export default {
   name: "profile",
   bodyClass: "profile-page",
@@ -285,6 +320,7 @@ export default {
       numRecibo: "",
       tituEleitoral: "",
       natOcup: "",
+      resultadoSoma: "",
     };
   },
   beforeMount() {
@@ -316,6 +352,12 @@ export default {
           window.alert("Usuário Excluído");
         })
         .catch((error) => console.log(error.message));
+    },
+    mostrarResultadoRend() {
+      userServicesRend.somarRend().then((r) => {
+        const dados = r.data;
+        this.resultadoSoma = dados[0].sumValores;
+      });
     },
   },
 };
@@ -358,13 +400,19 @@ export default {
   text-align: center;
 }
 
+.a-box3 {
+  display: inline-block;
+  width: 240px;
+  text-align: center;
+}
+
 .text-container {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 5px 20px 20px 20px;
   border-radius: 20px;
   background: #fff;
   position: relative;
-  left: 825px;
+  left: 500px;
   line-height: 19px;
   font-size: 14px;
 }
@@ -386,8 +434,9 @@ export default {
   padding: 5px 20px 20px 20px;
   border-radius: 20px;
   background: #fff;
-  position: relative;
-  left: 900px;
+  position: absolute;
+  left: 800px;
+  top: 1050px;
   line-height: 20px;
   font-size: 14px;
 }
@@ -399,4 +448,22 @@ export default {
   font-weight: bold;
 }
 
+.text-container3 {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 5px 20px 20px 20px;
+  border-radius: 20px;
+  background: #fff;
+  position: absolute;
+  left: 800px;
+  top: 1315px;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.text-container3 h3 {
+  margin: 20px 0px 10px 0px;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+}
 </style>

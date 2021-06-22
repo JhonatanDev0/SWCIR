@@ -356,10 +356,6 @@ import userServicesBens from "@/services/bens";
 import userServicesRend from "@/services/rendimentos";
 import userServicesFav from "@/services/favorecidos";
 import userServicesPag from "@/services/Pagamentos";
-import userServicesTipoBem from "@/services/tipobem";
-import userServicesTipoRend from "@/services/tiporend";
-import userServicesTipoPag from "@/services/tipopag";
-import userServices from "../../../bin/src/services/users";
 
 export default {
   components: {
@@ -501,37 +497,6 @@ export default {
           alert("Dados enviados");
         })
         .catch((r) => alert("Dados não enviados"));
-    },
-    mostrarVinBem(e) {
-      userServicesBens.puxarDadoBem().then((r) => {
-        const dados = r.data;
-        this.tipoBem = dados[0].tipo_bem_id;
-        this.vinCont = dados[0].user_id;
-        console.log(dados);
-      });
-    },
-    mostrarVinRend(e) {
-      userServicesRend.puxarDadoRend().then((r) => {
-        const dados = r.data;
-        this.tipoRend = dados[0].tipo_rend_id;
-        this.vinCont = dados[0].user_id;
-        console.log(dados);
-      });
-    },
-    mostrarVinPag(e) {
-      userServicesPag.puxarDadoPag().then((r) => {
-        const dados = r.data;
-        this.tipoPag = dados[0].tipo_pag_id;
-        this.vinCont = dados[0].user_id;
-        this.vinFav = dados[0].fav_id;
-        console.log(dados);
-      });
-    },
-    mostrarTipoBem(e) {
-      userServicesTipoBem.puxarDadoTipoBem().then((r) => {
-        const dados = r.data;
-        this.tipoBemId = dados[0].tipoBemId;
-      });
     },
   },
 };
