@@ -129,8 +129,8 @@
         <div class="textp2">
           <p>
             <b
-              >1) Soma dos rendimentos tributáveis – desconto de 20% =
-              base do calculo</b
+              >1) Soma dos rendimentos tributáveis – desconto de 20% = base do
+              calculo</b
             >
           </p>
           <p>
@@ -153,14 +153,10 @@
         <h3>Resultado do Cálculo</h3>
         <div class="textp3">
           <p>
-            <b
-              >Seu resultado do Cálculo irá aparecer abaixo:</b
-            >
+            <b>Seu resultado do Cálculo irá aparecer abaixo:</b>
           </p>
           <p>
-            <b
-              >R$: {{resultadoSoma}}</b
-            >
+            <b>R$: {{ resultadoSoma }}</b>
           </p>
         </div>
       </div>
@@ -325,6 +321,7 @@ export default {
   },
   beforeMount() {
     this.mostrarDadoCont();
+    this.mostrarResultadoRend();
   },
   methods: {
     mostrarDadoCont() {
@@ -356,8 +353,9 @@ export default {
     mostrarResultadoRend() {
       userServicesRend.somarRend().then((r) => {
         const dados = r.data;
-        this.resultadoSoma = dados[0].sumValores;
-      });
+        this.resultadoSoma = dados;
+        console.log(dados);
+      })
     },
   },
 };
