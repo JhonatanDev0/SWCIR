@@ -10,7 +10,7 @@ const puxarDadoRend = () => {
 }
 
 const somarRend = () => {
-    return api.get(`${endpoint}/sum/1`)
+    return api.get(`${endpoint}/sum/2`)
 }
 
 const excluirDadoRend = (rend_id) => {

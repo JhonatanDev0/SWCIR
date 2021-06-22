@@ -156,7 +156,14 @@
             <b>Seu resultado do Cálculo irá aparecer abaixo:</b>
           </p>
           <p>
-            <b>R$: {{ resultadoSoma }}</b>
+            <b
+              ><b>Soma dos rendimentos tributáveis =</b> {{ resultadoSoma }}
+              <b>X</b> <b>Alíquota</b> {{ aliquota }} <b>=</b>
+              {{ resultadoSoma * aliquota }}
+            </b>
+          </p>
+          <p>
+            <b><b>Imposto devido = </b> {{ resultadoSoma * aliquota }} <b>-</b> <b>Imposto já pago = </b> 0 <b>=</b> {{ resultadoSoma * aliquota }}</b>
           </p>
         </div>
       </div>
@@ -317,6 +324,7 @@ export default {
       tituEleitoral: "",
       natOcup: "",
       resultadoSoma: "",
+      aliquota: "",
     };
   },
   beforeMount() {
@@ -355,7 +363,21 @@ export default {
         const dados = r.data;
         this.resultadoSoma = dados;
         console.log(dados);
-      })
+        if (dados < 1903.98) {
+          return (this.aliquota = "0");
+        }
+        if (1903.99 < dados && dados < 2826.65) {
+          return (this.aliquota = 7.5 / 100);
+        }
+        if (2826.66 < dados && dados < 3751.05) {
+          return (this.aliquota = 15 / 100);
+        }
+        if (3751.06 < dados && dados < 4664.68) {
+          return (this.aliquota = 22.5 / 100);
+        } else {
+          return (this.aliquota = 27.5 / 100);
+        }
+      });
     },
   },
 };
