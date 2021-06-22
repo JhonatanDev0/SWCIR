@@ -118,9 +118,17 @@
           v-on:click="excluirDado"
           ><i class="now-ui-icons ui-1_simple-remove"></i
         ></n-button>
-        <n-button class="btn" style="color: white; background-color: green"
+        <!--<n-button class="btn" style="color: white; background-color: green"
           ><i class="now-ui-icons design-2_ruler-pencil"></i
-        ></n-button>
+        ></n-button> -->
+      </div>
+    </div>
+    <div class="a-box2">
+      <div class="text-container2">
+        <h3>Cálculo do IRPF Simplificado</h3>
+        <!--<n-button class="btn" style="color: white; background-color: green"
+          ><i class="now-ui-icons design-2_ruler-pencil"></i
+        ></n-button> -->
       </div>
     </div>
     <!-- <div class="section">
@@ -343,6 +351,13 @@ export default {
   width: 240px;
   text-align: center;
 }
+
+.a-box2 {
+  display: inline-block;
+  width: 240px;
+  text-align: center;
+}
+
 .text-container {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 5px 20px 20px 20px;
@@ -365,4 +380,23 @@ export default {
 .buttonedit {
   border-radius: 100px;
 }
+
+.text-container2 {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 5px 20px 20px 20px;
+  border-radius: 20px;
+  background: #fff;
+  position: relative;
+  left: 900px;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.text-container2 h3 {
+  margin: 20px 0px 10px 0px;
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 </style>

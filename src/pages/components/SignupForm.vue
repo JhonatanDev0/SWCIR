@@ -32,6 +32,14 @@
 
             <fg-input
               class="no-border"
+              placeholder="Natureza Ocupação..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="natOcupacao"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
               placeholder="Ocupação..."
               addon-left-icon="now-ui-icons text_caps-small"
               v-model="ocupacao"
@@ -51,6 +59,14 @@
               placeholder="Data de Nascimento..."
               addon-left-icon="now-ui-icons ui-1_calendar-60"
               v-model="dataNasc"
+            >
+            </fg-input>
+
+            <fg-input
+              class="no-border"
+              placeholder="Número Recibo anterior..."
+              addon-left-icon="now-ui-icons text_caps-small"
+              v-model="numReciboAnterior"
             >
             </fg-input>
 
@@ -104,7 +120,7 @@
               class="no-border"
               placeholder="Tipo Rendimento..."
               addon-left-icon="now-ui-icons text_caps-small"
-              v-model="tipoRend"
+              v-model="tipoBem"
             >
             </fg-input>
 
@@ -340,6 +356,10 @@ import userServicesBens from "@/services/bens";
 import userServicesRend from "@/services/rendimentos";
 import userServicesFav from "@/services/favorecidos";
 import userServicesPag from "@/services/Pagamentos";
+import userServicesTipoBem from "@/services/tipobem";
+import userServicesTipoRend from "@/services/tiporend";
+import userServicesTipoPag from "@/services/tipopag";
+import userServices from "../../../bin/src/services/users";
 
 export default {
   components: {
@@ -374,6 +394,8 @@ export default {
       tipoPag: "",
       vinFav: "",
       vinCont: "",
+      numReciboAnterior: "",
+      natOcupacao: "",
     };
   },
   methods: {
@@ -389,6 +411,8 @@ export default {
         nitPisPasep: this.nitPisPasep,
         tituloEleitoral: this.tituloEleitoral,
         numDependentes: this.numDependentes,
+        natOcupacao: this.natOcupacao,
+        numReciboAnterior: this.numReciboAnterior,
       };
       userServicesCont
         .cadastrarContribuinte(body)
@@ -401,6 +425,12 @@ export default {
       e.preventDefault();
       console.log(e);
       const body = {
+        user: {
+          userId: "2",
+        },
+        tipoRendimento: {
+          tipoRendId: "3",
+        },
         tipoFontPag: this.tipoFontPag,
         docFontPag: this.docFontPag,
         nomeFontPag: this.nomeFontPag,
@@ -417,6 +447,12 @@ export default {
       e.preventDefault();
       console.log(e);
       const body = {
+        user: {
+          userId: this.vinCont,
+        },
+        tipoBem: {
+          tipoBemId: this.tipoBem,
+        },
         docRef: this.docRef,
         valorDoisAnos: this.valorDoisAnos,
         valorAnoAnt: this.valorAnoAnt,
@@ -433,6 +469,15 @@ export default {
       e.preventDefault();
       console.log(e);
       const body = {
+        favorecido: {
+          favId: "11",
+        },
+        tipoPagamento: {
+          tipoPagId: "4",
+        },
+        user: {
+          userId: "1",
+        },
         realizadoCom: this.realizadoCom,
         valorPago: this.valorPago,
       };
@@ -476,10 +521,16 @@ export default {
     mostrarVinPag(e) {
       userServicesPag.puxarDadoPag().then((r) => {
         const dados = r.data;
-        this.tipoBem = dados[0].tipo_pag_id;
+        this.tipoPag = dados[0].tipo_pag_id;
         this.vinCont = dados[0].user_id;
         this.vinFav = dados[0].fav_id;
         console.log(dados);
+      });
+    },
+    mostrarTipoBem(e) {
+      userServicesTipoBem.puxarDadoTipoBem().then((r) => {
+        const dados = r.data;
+        this.tipoBemId = dados[0].tipoBemId;
       });
     },
   },
