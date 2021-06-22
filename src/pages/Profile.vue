@@ -159,7 +159,7 @@
           </p>
           <p>
             <b
-              >R$:</b
+              >R$: {{resultadoSoma}}</b
             >
           </p>
         </div>
@@ -298,6 +298,7 @@
 /* import { Tabs, TabPane } from "@/components"; */
 import { Button } from "@/components";
 import userServicesCont from "../services/users";
+import userServicesRend from "../services/rendimentos";
 export default {
   name: "profile",
   bodyClass: "profile-page",
@@ -319,6 +320,7 @@ export default {
       numRecibo: "",
       tituEleitoral: "",
       natOcup: "",
+      resultadoSoma: "",
     };
   },
   beforeMount() {
@@ -350,6 +352,12 @@ export default {
           window.alert("Usuário Excluído");
         })
         .catch((error) => console.log(error.message));
+    },
+    mostrarResultadoRend() {
+      userServicesRend.somarRend().then((r) => {
+        const dados = r.data;
+        this.resultadoSoma = dados[0].sumValores;
+      });
     },
   },
 };

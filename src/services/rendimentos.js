@@ -9,6 +9,10 @@ const puxarDadoRend = () => {
     return api.get(`${endpoint}/`)
 }
 
+const somarRend = () => {
+    return api.get(`${endpoint}/sum/1`)
+}
+
 const excluirDadoRend = (rend_id) => {
     return api.delete(`${endpoint}/${rend_id}`)
 }
@@ -17,6 +21,7 @@ const userServicesRend = {
     cadastrarRendimentos,
     puxarDadoRend,
     excluirDadoRend,
+    somarRend,
 };
 
 export default userServicesRend;
