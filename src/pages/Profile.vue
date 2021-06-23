@@ -157,18 +157,19 @@
           </p>
           <p>
             <b
-              ><b>Soma dos rendimentos tributáveis: </b> {{ resultadoSoma }} <b>– desconto de 20%: </b> {{ resultadoSoma * (20/100) }}
+              ><b>Soma dos rendimentos tributáveis: </b> {{ resultadoSoma }} <b>– desconto de 20%: </b> {{ resultadoSoma - (resultadoSoma * (20/100)) }}
             </b>
           </p>
           <p>
             <b
-              ><b>Base do Cálculo:</b> {{ resultadoSoma * (20/100) }}
+              ><b>Base do Cálculo:</b> {{ resultadoSoma - (resultadoSoma * (20/100)) }}
               <b>X</b> <b>Alíquota</b><!-- {{ aliquota }}  --><b> =</b>
-              {{ (resultadoSoma * (20/100)) * aliquota }}
+              {{ (resultadoSoma - (resultadoSoma * (20/100))) * aliquota }}
             </b>
           </p>
           <p>
-            <b><b>Imposto devido: </b> {{ (resultadoSoma * (20/100)) * aliquota }} <b>-</b> <b>Imposto já pago: </b> 0 <b>=</b> {{ (resultadoSoma * (20/100)) * aliquota }}</b>
+            <b><b>Imposto devido: </b> {{ (resultadoSoma - (resultadoSoma * (20/100))) * aliquota }}</b>
+           <!-- <b>-</b> <b>Imposto já pago: </b> 0 <b>=</b> {{ (resultadoSoma - (resultadoSoma * (20/100))) * aliquota }} -->
           </p>
         </div>
       </div>

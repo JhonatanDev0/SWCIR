@@ -422,10 +422,10 @@ export default {
       console.log(e);
       const body = {
         user: {
-          userId: "2",
+          userId: this.vinCont,
         },
         tipoRendimento: {
-          tipoRendId: "3",
+          tipoRendId: this.tipoRend,
         },
         tipoFontPag: this.tipoFontPag,
         docFontPag: this.docFontPag,
@@ -466,13 +466,13 @@ export default {
       console.log(e);
       const body = {
         favorecido: {
-          favId: "11",
+          favId: this.favId,
         },
         tipoPagamento: {
-          tipoPagId: "4",
+          tipoPagId: this.tipoPag,
         },
         user: {
-          userId: "1",
+          userId: this.vinCont,
         },
         realizadoCom: this.realizadoCom,
         valorPago: this.valorPago,
